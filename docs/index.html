@@ -1,8 +1,25 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" class="dark" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+
+    <!-- Theme Initialization (prevents flash of wrong theme) -->
+    <script>
+      (function() {
+        try {
+          var saved = localStorage.getItem('calchub_theme');
+          var isDark = saved ? saved === 'dark' : true;
+          if (isDark) {
+            document.documentElement.classList.add('dark');
+            document.documentElement.setAttribute('data-theme', 'dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+            document.documentElement.setAttribute('data-theme', 'light');
+          }
+        } catch (e) {}
+      })();
+    </script>
 
     <!-- SEO Meta Tags -->
     <title>CalcHub – Precision Online Calculators</title>
@@ -67,8 +84,8 @@
         }
       }
     </script>
-    <script type="module" crossorigin src="./assets/index-DdyNF7-G.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-BPfGlIyS.css">
+    <script type="module" crossorigin src="./assets/index-Do8x-r6z.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-D9DrdO7-.css">
   </head>
   <body>
     <div id="root"></div>

@@ -3,19 +3,6 @@
 @tailwind utilities;
 
 :root {
-  --bg: #09090b;
-  --surface: #121215;
-  --surface-2: #18181b;
-  --surface-3: #27272a;
-  --border: rgba(255, 255, 255, 0.08);
-  --border-2: rgba(255, 255, 255, 0.14);
-  --text: #fafafa;
-  --text-2: #a1a1aa;
-  --text-3: #71717a;
-  --accent: #2563eb;
-}
-
-[data-theme="light"] {
   --bg: #ffffff;
   --surface: #ffffff;
   --surface-2: #f8fafc;
@@ -26,6 +13,19 @@
   --text-2: #64748b;
   --text-3: #94a3b8;
   --accent: #2563eb;
+}
+
+html.dark {
+  --bg: #09090b;
+  --surface: #121215;
+  --surface-2: #18181b;
+  --surface-3: #27272a;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-2: rgba(255, 255, 255, 0.14);
+  --text: #fafafa;
+  --text-2: #a1a1aa;
+  --text-3: #71717a;
+  --accent: #3b82f6;
 }
 
 body {
@@ -53,52 +53,20 @@ body {
 }
 
 .btn-calc-op {
-  background: rgba(37, 99, 235, 0.1);
-  border-color: rgba(37, 99, 235, 0.25);
-  color: #60a5fa;
-}
-[data-theme="light"] .btn-calc-op {
-  background: #eff6ff;
-  border-color: #bfdbfe;
-  color: #2563eb;
-}
-.btn-calc-op:hover {
-  background: rgba(37, 99, 235, 0.2);
+  @apply bg-blue-50 text-blue-600 border border-blue-200 dark:bg-blue-950/40 dark:text-blue-400 dark:border-blue-900/50 hover:bg-blue-100 dark:hover:bg-blue-900/40;
 }
 
 .btn-calc-action {
-  background: rgba(239, 68, 68, 0.1);
-  border-color: rgba(239, 68, 68, 0.2);
-  color: #f87171;
-}
-[data-theme="light"] .btn-calc-action {
-  background: #fef2f2;
-  border-color: #fecaca;
-  color: #dc2626;
-}
-.btn-calc-action:hover {
-  background: rgba(239, 68, 68, 0.18);
+  @apply bg-red-50 text-red-600 border border-red-200 dark:bg-red-950/40 dark:text-red-400 dark:border-red-900/50 hover:bg-red-100 dark:hover:bg-red-900/40;
 }
 
 .btn-calc-fn {
-  background: var(--surface-2);
-  border-color: var(--border);
-  color: var(--text-2);
+  @apply bg-slate-100 text-slate-700 border border-slate-200 dark:bg-zinc-800 dark:text-zinc-300 dark:border-zinc-700 hover:bg-slate-200 dark:hover:bg-zinc-700;
   font-size: 0.8rem;
-}
-.btn-calc-fn:hover {
-  background: var(--surface-3);
-  color: var(--text);
 }
 
 .btn-calc-eq {
-  background: #2563eb;
-  color: #ffffff;
-  border: 1px solid #1d4ed8;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-.btn-calc-eq:hover {
-  background: #1d4ed8;
+  @apply bg-blue-600 text-white border border-blue-700 hover:bg-blue-700 shadow-sm;
 }
 
 /* Custom Scrollbar */

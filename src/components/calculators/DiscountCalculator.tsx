@@ -59,7 +59,7 @@ export const DiscountCalculator: React.FC<DiscountCalculatorProps> = ({
     >
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-6">
         <div>
-          <label className="block text-xs font-bold text-slate-400 [data-theme='light']:text-slate-600 mb-2 uppercase tracking-wider">
+          <label className="block text-xs font-bold text-slate-600 dark:text-zinc-400 mb-2 uppercase tracking-wider">
             Original Price ($)
           </label>
           <input
@@ -68,12 +68,12 @@ export const DiscountCalculator: React.FC<DiscountCalculatorProps> = ({
             placeholder="e.g. 120"
             value={price}
             onChange={e => setPrice(e.target.value === '' ? '' : parseFloat(e.target.value))}
-            className="w-full px-4 py-2.5 rounded-xl bg-white/[0.05] [data-theme='light']:bg-slate-100 border border-white/10 [data-theme='light']:border-slate-300 text-sm font-semibold outline-none focus:border-indigo-500"
+            className="w-full px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-zinc-850 border border-slate-300 dark:border-zinc-800 text-sm font-semibold outline-none focus:border-indigo-500"
           />
         </div>
 
         <div>
-          <label className="block text-xs font-bold text-slate-400 [data-theme='light']:text-slate-600 mb-2 uppercase tracking-wider">
+          <label className="block text-xs font-bold text-slate-600 dark:text-zinc-400 mb-2 uppercase tracking-wider">
             Discount (%)
           </label>
           <input
@@ -83,12 +83,12 @@ export const DiscountCalculator: React.FC<DiscountCalculatorProps> = ({
             placeholder="e.g. 25"
             value={discount}
             onChange={e => setDiscount(e.target.value === '' ? '' : parseFloat(e.target.value))}
-            className="w-full px-4 py-2.5 rounded-xl bg-white/[0.05] [data-theme='light']:bg-slate-100 border border-white/10 [data-theme='light']:border-slate-300 text-sm font-semibold outline-none focus:border-indigo-500"
+            className="w-full px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-zinc-850 border border-slate-300 dark:border-zinc-800 text-sm font-semibold outline-none focus:border-indigo-500"
           />
         </div>
 
         <div>
-          <label className="block text-xs font-bold text-slate-400 [data-theme='light']:text-slate-600 mb-2 uppercase tracking-wider">
+          <label className="block text-xs font-bold text-slate-600 dark:text-zinc-400 mb-2 uppercase tracking-wider">
             Sales Tax (%)
           </label>
           <input
@@ -97,13 +97,13 @@ export const DiscountCalculator: React.FC<DiscountCalculatorProps> = ({
             placeholder="e.g. 7"
             value={tax}
             onChange={e => setTax(e.target.value === '' ? '' : parseFloat(e.target.value))}
-            className="w-full px-4 py-2.5 rounded-xl bg-white/[0.05] [data-theme='light']:bg-slate-100 border border-white/10 [data-theme='light']:border-slate-300 text-sm font-semibold outline-none focus:border-indigo-500"
+            className="w-full px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-zinc-850 border border-slate-300 dark:border-zinc-800 text-sm font-semibold outline-none focus:border-indigo-500"
           />
         </div>
       </div>
 
       {result && (
-        <div className="p-5 sm:p-6 rounded-xl bg-zinc-900 [data-theme='light']:bg-slate-50 border border-zinc-800 [data-theme='light']:border-slate-200">
+        <div className="p-5 sm:p-6 rounded-xl bg-slate-50 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800">
           <div className="flex items-center justify-between mb-2">
             <span className="text-xs font-semibold uppercase tracking-wider text-zinc-400">Final Price to Pay</span>
             <button
@@ -114,33 +114,33 @@ export const DiscountCalculator: React.FC<DiscountCalculatorProps> = ({
             </button>
           </div>
 
-          <div className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-zinc-100 [data-theme='light']:text-slate-900">
+          <div className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-slate-900 dark:text-zinc-100">
             ${result.finalPrice}
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 mt-5">
-            <div className="p-3 rounded-lg bg-zinc-800/50 [data-theme='light']:bg-white border border-zinc-800 [data-theme='light']:border-slate-200">
+            <div className="p-3 rounded-lg bg-white dark:bg-zinc-800/50 border border-slate-200 dark:border-zinc-800">
               <div className="text-[10px] text-zinc-400 uppercase font-medium">Total Money Saved</div>
               <div className="text-xs sm:text-sm font-semibold font-display text-emerald-400 mt-0.5">
                 ${result.totalSaved}
               </div>
             </div>
 
-            <div className="p-3 rounded-lg bg-zinc-800/50 [data-theme='light']:bg-white border border-zinc-800 [data-theme='light']:border-slate-200">
+            <div className="p-3 rounded-lg bg-white dark:bg-zinc-800/50 border border-slate-200 dark:border-zinc-800">
               <div className="text-[10px] text-zinc-400 uppercase font-medium">Discounted Price</div>
-              <div className="text-xs sm:text-sm font-semibold font-display text-zinc-100 [data-theme='light']:text-slate-900 mt-0.5">
+              <div className="text-xs sm:text-sm font-semibold font-display text-slate-900 dark:text-zinc-100 mt-0.5">
                 ${result.discountedPrice}
               </div>
             </div>
 
-            <div className="p-3 rounded-lg bg-zinc-800/50 [data-theme='light']:bg-white border border-zinc-800 [data-theme='light']:border-slate-200">
+            <div className="p-3 rounded-lg bg-white dark:bg-zinc-800/50 border border-slate-200 dark:border-zinc-800">
               <div className="text-[10px] text-zinc-400 uppercase font-medium">Sales Tax</div>
               <div className="text-xs sm:text-sm font-semibold font-display text-amber-400 mt-0.5">
                 ${result.taxAmount}
               </div>
             </div>
 
-            <div className="p-3 rounded-lg bg-zinc-800/50 [data-theme='light']:bg-white border border-zinc-800 [data-theme='light']:border-slate-200">
+            <div className="p-3 rounded-lg bg-white dark:bg-zinc-800/50 border border-slate-200 dark:border-zinc-800">
               <div className="text-[10px] text-zinc-400 uppercase font-medium">Effective Discount</div>
               <div className="text-xs sm:text-sm font-semibold font-display text-blue-500 mt-0.5">
                 {Math.round(((result.originalPrice - result.finalPrice) / result.originalPrice) * 100)}%

@@ -11,19 +11,29 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [theme, setTheme] = useState<Theme>(() => {
-    const saved = localStorage.getItem('calchub_theme');
-    if (saved === 'light' || saved === 'dark') return saved;
-    return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    try {
+      const saved = localStorage.getItem('calchub_theme');
+      if (saved === 'light' || saved === 'dark') return saved;
+    } catch (e) {}
+    return 'dark'; // default to dark
   });
 
   useEffect(() => {
-    document.documentElement.dataset.theme = theme;
+    const root = document.documentElement;
     if (theme === 'dark') {
-      document.documentElement.classList.add('dark');
+      root.classList.add('dark');
+      root.setAttribute('data-theme', 'dark');
     } else {
-      document.documentElement.classList.remove('dark');
+      root.classList.remove('dark');
+      root.setAttribute('data-theme', 'light');
     }
-    localStorage.setItem('calchub_theme', theme);
+    try {
+      localStorage.setItem('calchub_theme', theme);
+      const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+      if (metaThemeColor) {
+        metaThemeColor.setAttribute('content', theme === 'dark' ? '#09090b' : '#ffffff');
+      }
+    } catch (e) {}
   }, [theme]);
 
   const toggleTheme = () => {

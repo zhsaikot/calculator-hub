@@ -40,8 +40,8 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose, onSel
 
   return (
     <div className="fixed inset-0 z-50 flex items-start justify-center pt-20 p-4 bg-black/60 backdrop-blur-sm animate-fade-up">
-      <div className="w-full max-w-lg bg-slate-900 [data-theme='light']:bg-white border border-white/15 [data-theme='light']:border-slate-200 rounded-2xl shadow-2xl overflow-hidden">
-        <div className="flex items-center px-4 py-3.5 border-b border-white/10 [data-theme='light']:border-slate-100">
+      <div className="w-full max-w-lg bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-2xl shadow-2xl overflow-hidden">
+        <div className="flex items-center px-4 py-3.5 border-b border-slate-100 dark:border-zinc-800">
           <Search className="w-5 h-5 text-indigo-400 mr-3 flex-shrink-0" />
           <input
             type="text"
@@ -49,14 +49,14 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose, onSel
             placeholder="Search calculators (e.g., loan, bmi, percentage)..."
             value={query}
             onChange={e => setQuery(e.target.value)}
-            className="w-full bg-transparent text-sm text-white [data-theme='light']:text-slate-900 outline-none placeholder:text-slate-500"
+            className="w-full bg-transparent text-sm text-slate-900 dark:text-zinc-100 outline-none placeholder:text-slate-500"
           />
-          <button onClick={onClose} className="p-1 text-slate-400 hover:text-white [data-theme='light']:hover:text-slate-900">
+          <button onClick={onClose} className="p-1 text-slate-400 hover:text-slate-900 dark:hover:text-zinc-100">
             <X className="w-5 h-5" />
           </button>
         </div>
 
-        <div className="max-h-80 overflow-y-auto p-2 divide-y divide-white/5 [data-theme='light']:divide-slate-100">
+        <div className="max-h-80 overflow-y-auto p-2 divide-y divide-slate-100 dark:divide-zinc-800">
           {filtered.length === 0 ? (
             <div className="p-8 text-center text-sm text-slate-500">
               No calculator found matching "{query}".
@@ -69,18 +69,18 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose, onSel
                   onSelect(item.id);
                   onClose();
                 }}
-                className="w-full flex items-center justify-between p-3 rounded-xl hover:bg-white/5 [data-theme='light']:hover:bg-slate-100 text-left transition-all group"
+                className="w-full flex items-center justify-between p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-zinc-800 text-left transition-all group"
               >
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="font-display font-bold text-sm text-white [data-theme='light']:text-slate-900">
+                    <span className="font-display font-bold text-sm text-slate-900 dark:text-zinc-100">
                       {item.title}
                     </span>
                     <span className="text-[10px] px-2 py-0.5 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
                       {item.category}
                     </span>
                   </div>
-                  <p className="text-xs text-slate-400 [data-theme='light']:text-slate-500 mt-0.5">
+                  <p className="text-xs text-slate-500 dark:text-zinc-400 mt-0.5">
                     {item.shortDesc}
                   </p>
                 </div>
@@ -90,7 +90,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose, onSel
           )}
         </div>
 
-        <div className="px-4 py-2 bg-white/[0.02] [data-theme='light']:bg-slate-50 border-t border-white/5 [data-theme='light']:border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
+        <div className="px-4 py-2 bg-slate-50 dark:bg-zinc-900 border-t border-slate-100 dark:border-zinc-800/80 flex items-center justify-between text-[11px] text-slate-500">
           <span>{filtered.length} calculators available</span>
           <span>Press ESC to close</span>
         </div>

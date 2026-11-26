@@ -67,7 +67,7 @@ export const ProfitLossCalculator: React.FC<ProfitLossCalculatorProps> = ({
     >
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
         <div>
-          <label className="block text-xs font-bold text-slate-400 [data-theme='light']:text-slate-600 mb-2 uppercase tracking-wider">
+          <label className="block text-xs font-bold text-slate-600 dark:text-zinc-400 mb-2 uppercase tracking-wider">
             Cost Price (per unit)
           </label>
           <input
@@ -76,12 +76,12 @@ export const ProfitLossCalculator: React.FC<ProfitLossCalculatorProps> = ({
             placeholder="e.g. 800"
             value={costPrice}
             onChange={e => setCostPrice(e.target.value === '' ? '' : parseFloat(e.target.value))}
-            className="w-full px-4 py-2.5 rounded-xl bg-white/[0.05] [data-theme='light']:bg-slate-100 border border-white/10 [data-theme='light']:border-slate-300 text-sm font-semibold outline-none focus:border-indigo-500"
+            className="w-full px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-zinc-850 border border-slate-300 dark:border-zinc-800 text-sm font-semibold outline-none focus:border-indigo-500"
           />
         </div>
 
         <div>
-          <label className="block text-xs font-bold text-slate-400 [data-theme='light']:text-slate-600 mb-2 uppercase tracking-wider">
+          <label className="block text-xs font-bold text-slate-600 dark:text-zinc-400 mb-2 uppercase tracking-wider">
             Selling Price (per unit)
           </label>
           <input
@@ -90,12 +90,12 @@ export const ProfitLossCalculator: React.FC<ProfitLossCalculatorProps> = ({
             placeholder="e.g. 1000"
             value={sellingPrice}
             onChange={e => setSellingPrice(e.target.value === '' ? '' : parseFloat(e.target.value))}
-            className="w-full px-4 py-2.5 rounded-xl bg-white/[0.05] [data-theme='light']:bg-slate-100 border border-white/10 [data-theme='light']:border-slate-300 text-sm font-semibold outline-none focus:border-indigo-500"
+            className="w-full px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-zinc-850 border border-slate-300 dark:border-zinc-800 text-sm font-semibold outline-none focus:border-indigo-500"
           />
         </div>
 
         <div>
-          <label className="block text-xs font-bold text-slate-400 [data-theme='light']:text-slate-600 mb-2 uppercase tracking-wider">
+          <label className="block text-xs font-bold text-slate-600 dark:text-zinc-400 mb-2 uppercase tracking-wider">
             Quantity Sold
           </label>
           <input
@@ -104,12 +104,12 @@ export const ProfitLossCalculator: React.FC<ProfitLossCalculatorProps> = ({
             placeholder="e.g. 50"
             value={quantity}
             onChange={e => setQuantity(e.target.value === '' ? '' : parseFloat(e.target.value))}
-            className="w-full px-4 py-2.5 rounded-xl bg-white/[0.05] [data-theme='light']:bg-slate-100 border border-white/10 [data-theme='light']:border-slate-300 text-sm font-semibold outline-none focus:border-indigo-500"
+            className="w-full px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-zinc-850 border border-slate-300 dark:border-zinc-800 text-sm font-semibold outline-none focus:border-indigo-500"
           />
         </div>
 
         <div>
-          <label className="block text-xs font-bold text-slate-400 [data-theme='light']:text-slate-600 mb-2 uppercase tracking-wider">
+          <label className="block text-xs font-bold text-slate-600 dark:text-zinc-400 mb-2 uppercase tracking-wider">
             Overhead / Shipping
           </label>
           <input
@@ -118,13 +118,13 @@ export const ProfitLossCalculator: React.FC<ProfitLossCalculatorProps> = ({
             placeholder="e.g. 200"
             value={overhead}
             onChange={e => setOverhead(e.target.value === '' ? '' : parseFloat(e.target.value))}
-            className="w-full px-4 py-2.5 rounded-xl bg-white/[0.05] [data-theme='light']:bg-slate-100 border border-white/10 [data-theme='light']:border-slate-300 text-sm font-semibold outline-none focus:border-indigo-500"
+            className="w-full px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-zinc-850 border border-slate-300 dark:border-zinc-800 text-sm font-semibold outline-none focus:border-indigo-500"
           />
         </div>
       </div>
 
       {result && (
-        <div className="p-5 sm:p-6 rounded-xl bg-zinc-900 [data-theme='light']:bg-slate-50 border border-zinc-800 [data-theme='light']:border-slate-200">
+        <div className="p-5 sm:p-6 rounded-xl bg-slate-50 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800">
           <div className="flex items-center justify-between mb-2">
             <span className="text-xs font-semibold uppercase tracking-wider text-zinc-400">
               Net {result.isProfit ? 'Profit' : 'Loss'} Outcome
@@ -146,28 +146,28 @@ export const ProfitLossCalculator: React.FC<ProfitLossCalculatorProps> = ({
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 mt-5">
-            <div className="p-3 rounded-lg bg-zinc-800/50 [data-theme='light']:bg-white border border-zinc-800 [data-theme='light']:border-slate-200">
+            <div className="p-3 rounded-lg bg-white dark:bg-zinc-800/50 border border-slate-200 dark:border-zinc-800">
               <div className="text-[10px] text-zinc-400 uppercase font-medium">Total Revenue</div>
-              <div className="text-xs sm:text-sm font-semibold font-display text-zinc-100 [data-theme='light']:text-slate-900 mt-0.5">
+              <div className="text-xs sm:text-sm font-semibold font-display text-slate-900 dark:text-zinc-100 mt-0.5">
                 ${result.revenue.toLocaleString()}
               </div>
             </div>
 
-            <div className="p-3 rounded-lg bg-zinc-800/50 [data-theme='light']:bg-white border border-zinc-800 [data-theme='light']:border-slate-200">
+            <div className="p-3 rounded-lg bg-white dark:bg-zinc-800/50 border border-slate-200 dark:border-zinc-800">
               <div className="text-[10px] text-zinc-400 uppercase font-medium">Total Cost (COGS)</div>
-              <div className="text-xs sm:text-sm font-semibold font-display text-zinc-100 [data-theme='light']:text-slate-900 mt-0.5">
+              <div className="text-xs sm:text-sm font-semibold font-display text-slate-900 dark:text-zinc-100 mt-0.5">
                 ${result.totalCost.toLocaleString()}
               </div>
             </div>
 
-            <div className="p-3 rounded-lg bg-zinc-800/50 [data-theme='light']:bg-white border border-zinc-800 [data-theme='light']:border-slate-200">
+            <div className="p-3 rounded-lg bg-white dark:bg-zinc-800/50 border border-slate-200 dark:border-zinc-800">
               <div className="text-[10px] text-zinc-400 uppercase font-medium">Profit Margin</div>
               <div className="text-xs sm:text-sm font-semibold font-display text-blue-500 mt-0.5">
                 {result.profitMarginPercentage}%
               </div>
             </div>
 
-            <div className="p-3 rounded-lg bg-zinc-800/50 [data-theme='light']:bg-white border border-zinc-800 [data-theme='light']:border-slate-200">
+            <div className="p-3 rounded-lg bg-white dark:bg-zinc-800/50 border border-slate-200 dark:border-zinc-800">
               <div className="text-[10px] text-zinc-400 uppercase font-medium">Markup on Cost</div>
               <div className="text-xs sm:text-sm font-semibold font-display text-blue-500 mt-0.5">
                 {result.profitLossPercentage}%

@@ -74,7 +74,7 @@ export const LoanCalculator: React.FC<LoanCalculatorProps> = ({
     >
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-6">
         <div>
-          <label className="block text-xs font-bold text-slate-400 [data-theme='light']:text-slate-600 mb-2 uppercase tracking-wider">
+          <label className="block text-xs font-bold text-slate-600 dark:text-zinc-400 mb-2 uppercase tracking-wider">
             Loan Principal Amount
           </label>
           <input
@@ -83,12 +83,12 @@ export const LoanCalculator: React.FC<LoanCalculatorProps> = ({
             placeholder="e.g. 500000"
             value={amount}
             onChange={e => setAmount(e.target.value === '' ? '' : parseFloat(e.target.value))}
-            className="w-full px-4 py-2.5 rounded-xl bg-white/[0.05] [data-theme='light']:bg-slate-100 border border-white/10 [data-theme='light']:border-slate-300 text-sm font-semibold outline-none focus:border-indigo-500"
+            className="w-full px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-zinc-850 border border-slate-300 dark:border-zinc-800 text-sm font-semibold outline-none focus:border-indigo-500"
           />
         </div>
 
         <div>
-          <label className="block text-xs font-bold text-slate-400 [data-theme='light']:text-slate-600 mb-2 uppercase tracking-wider">
+          <label className="block text-xs font-bold text-slate-600 dark:text-zinc-400 mb-2 uppercase tracking-wider">
             Annual Interest Rate (%)
           </label>
           <input
@@ -98,12 +98,12 @@ export const LoanCalculator: React.FC<LoanCalculatorProps> = ({
             placeholder="e.g. 8.5"
             value={rate}
             onChange={e => setRate(e.target.value === '' ? '' : parseFloat(e.target.value))}
-            className="w-full px-4 py-2.5 rounded-xl bg-white/[0.05] [data-theme='light']:bg-slate-100 border border-white/10 [data-theme='light']:border-slate-300 text-sm font-semibold outline-none focus:border-indigo-500"
+            className="w-full px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-zinc-850 border border-slate-300 dark:border-zinc-800 text-sm font-semibold outline-none focus:border-indigo-500"
           />
         </div>
 
         <div>
-          <label className="block text-xs font-bold text-slate-400 [data-theme='light']:text-slate-600 mb-2 uppercase tracking-wider">
+          <label className="block text-xs font-bold text-slate-600 dark:text-zinc-400 mb-2 uppercase tracking-wider">
             Loan Term (Years)
           </label>
           <input
@@ -113,14 +113,14 @@ export const LoanCalculator: React.FC<LoanCalculatorProps> = ({
             placeholder="e.g. 5"
             value={term}
             onChange={e => setTerm(e.target.value === '' ? '' : parseFloat(e.target.value))}
-            className="w-full px-4 py-2.5 rounded-xl bg-white/[0.05] [data-theme='light']:bg-slate-100 border border-white/10 [data-theme='light']:border-slate-300 text-sm font-semibold outline-none focus:border-indigo-500"
+            className="w-full px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-zinc-850 border border-slate-300 dark:border-zinc-800 text-sm font-semibold outline-none focus:border-indigo-500"
           />
         </div>
       </div>
 
       {result && (
         <div className="space-y-6">
-          <div className="p-5 sm:p-6 rounded-xl bg-zinc-900 [data-theme='light']:bg-slate-50 border border-zinc-800 [data-theme='light']:border-slate-200">
+          <div className="p-5 sm:p-6 rounded-xl bg-slate-50 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800">
             <div className="flex items-center justify-between mb-2">
               <span className="text-xs font-semibold uppercase tracking-wider text-zinc-400">Monthly EMI Payment</span>
               <button
@@ -131,33 +131,33 @@ export const LoanCalculator: React.FC<LoanCalculatorProps> = ({
               </button>
             </div>
 
-            <div className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-zinc-100 [data-theme='light']:text-slate-900">
+            <div className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-slate-900 dark:text-zinc-100">
               ${result.monthlyEmi.toLocaleString()} <span className="text-xs sm:text-sm font-normal text-zinc-400">/ month</span>
             </div>
 
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 mt-5">
-              <div className="p-3 rounded-lg bg-zinc-800/50 [data-theme='light']:bg-white border border-zinc-800 [data-theme='light']:border-slate-200">
+              <div className="p-3 rounded-lg bg-white dark:bg-zinc-800/50 border border-slate-200 dark:border-zinc-800">
                 <div className="text-[10px] text-zinc-400 uppercase font-medium">Total Payment</div>
-                <div className="text-xs sm:text-sm font-semibold font-display text-zinc-100 [data-theme='light']:text-slate-900 mt-0.5">
+                <div className="text-xs sm:text-sm font-semibold font-display text-slate-900 dark:text-zinc-100 mt-0.5">
                   ${result.totalPayment.toLocaleString()}
                 </div>
               </div>
 
-              <div className="p-3 rounded-lg bg-zinc-800/50 [data-theme='light']:bg-white border border-zinc-800 [data-theme='light']:border-slate-200">
+              <div className="p-3 rounded-lg bg-white dark:bg-zinc-800/50 border border-slate-200 dark:border-zinc-800">
                 <div className="text-[10px] text-zinc-400 uppercase font-medium">Total Interest</div>
                 <div className="text-xs sm:text-sm font-semibold font-display text-rose-400 mt-0.5">
                   ${result.totalInterest.toLocaleString()}
                 </div>
               </div>
 
-              <div className="p-3 rounded-lg bg-zinc-800/50 [data-theme='light']:bg-white border border-zinc-800 [data-theme='light']:border-slate-200">
+              <div className="p-3 rounded-lg bg-white dark:bg-zinc-800/50 border border-slate-200 dark:border-zinc-800">
                 <div className="text-[10px] text-zinc-400 uppercase font-medium">Principal Borrowed</div>
-                <div className="text-xs sm:text-sm font-semibold font-display text-zinc-100 [data-theme='light']:text-slate-900 mt-0.5">
+                <div className="text-xs sm:text-sm font-semibold font-display text-slate-900 dark:text-zinc-100 mt-0.5">
                   ${result.totalPrincipal.toLocaleString()}
                 </div>
               </div>
 
-              <div className="p-3 rounded-lg bg-zinc-800/50 [data-theme='light']:bg-white border border-zinc-800 [data-theme='light']:border-slate-200">
+              <div className="p-3 rounded-lg bg-white dark:bg-zinc-800/50 border border-slate-200 dark:border-zinc-800">
                 <div className="text-[10px] text-zinc-400 uppercase font-medium">Interest to Loan %</div>
                 <div className="text-xs sm:text-sm font-semibold font-display text-amber-400 mt-0.5">
                   {result.interestRatioPercentage}%
@@ -170,15 +170,15 @@ export const LoanCalculator: React.FC<LoanCalculatorProps> = ({
           <div className="flex items-center justify-between gap-4 flex-wrap">
             <button
               onClick={() => setShowSchedule(!showSchedule)}
-              className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 [data-theme='light']:bg-slate-100 hover:bg-white/10 border border-white/10 [data-theme='light']:border-slate-300 text-xs font-semibold transition-all"
+              className="flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-100 dark:bg-zinc-850 hover:bg-slate-200 dark:hover:bg-zinc-700 border border-slate-300 dark:border-zinc-800 text-slate-700 dark:text-zinc-200 text-xs font-semibold transition-all"
             >
-              <Table className="w-4 h-4 text-indigo-400" />
+              <Table className="w-4 h-4 text-blue-600 dark:text-blue-400" />
               {showSchedule ? 'Hide Schedule' : 'View Monthly Amortization Table'}
             </button>
 
             <button
               onClick={handleDownloadCsv}
-              className="flex items-center gap-2 px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold shadow-md transition-all"
+              className="flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold shadow-sm transition-all"
             >
               <Download className="w-4 h-4" /> Download CSV
             </button>
@@ -186,10 +186,10 @@ export const LoanCalculator: React.FC<LoanCalculatorProps> = ({
 
           {/* Amortization Table */}
           {showSchedule && (
-            <div className="rounded-xl border border-white/10 [data-theme='light']:border-slate-200 overflow-hidden">
+            <div className="rounded-xl border border-slate-200 dark:border-zinc-800 overflow-hidden">
               <div className="max-h-80 overflow-y-auto">
                 <table className="w-full text-left text-xs">
-                  <thead className="bg-white/5 [data-theme='light']:bg-slate-100 sticky top-0 text-[11px] font-bold text-slate-400 uppercase">
+                  <thead className="bg-slate-100 dark:bg-zinc-850 sticky top-0 text-[11px] font-bold text-slate-500 dark:text-zinc-400 uppercase">
                     <tr>
                       <th className="p-3">Month</th>
                       <th className="p-3">EMI</th>
@@ -198,14 +198,14 @@ export const LoanCalculator: React.FC<LoanCalculatorProps> = ({
                       <th className="p-3">Remaining Balance</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-white/5 [data-theme='light']:divide-slate-200">
+                  <tbody className="divide-y divide-slate-200 dark:divide-zinc-800">
                     {result.schedule.map(row => (
-                      <tr key={row.month} className="hover:bg-white/5">
+                      <tr key={row.month} className="hover:bg-slate-50 dark:hover:bg-zinc-850/50">
                         <td className="p-3 font-semibold text-slate-400">{row.month}</td>
-                        <td className="p-3 font-medium text-white [data-theme='light']:text-slate-900">${row.emi.toLocaleString()}</td>
-                        <td className="p-3 text-emerald-400">${row.principalPayment.toLocaleString()}</td>
-                        <td className="p-3 text-rose-400">${row.interestPayment.toLocaleString()}</td>
-                        <td className="p-3 font-mono text-slate-400">${row.remainingBalance.toLocaleString()}</td>
+                        <td className="p-3 font-medium text-slate-900 dark:text-zinc-100">${row.emi.toLocaleString()}</td>
+                        <td className="p-3 text-emerald-600 dark:text-emerald-400 font-medium">${row.principalPayment.toLocaleString()}</td>
+                        <td className="p-3 text-rose-600 dark:text-rose-400 font-medium">${row.interestPayment.toLocaleString()}</td>
+                        <td className="p-3 font-mono text-slate-500 dark:text-zinc-400">${row.remainingBalance.toLocaleString()}</td>
                       </tr>
                     ))}
                   </tbody>

@@ -106,9 +106,9 @@ export const BasicCalculator: React.FC<BasicCalculatorProps> = ({ onBack, onShar
     >
       <div className="max-w-xs mx-auto">
         {/* Display */}
-        <div className="p-4 rounded-2xl bg-white/[0.05] [data-theme='light']:bg-slate-100 border border-white/10 [data-theme='light']:border-slate-200 text-right mb-4 min-h-[90px] flex flex-col justify-end">
+        <div className="p-4 rounded-2xl bg-slate-100 dark:bg-zinc-850 border border-slate-200 dark:border-zinc-800 text-right mb-4 min-h-[90px] flex flex-col justify-end">
           <div className="text-xs text-slate-400 font-mono min-h-[18px]">{expr}</div>
-          <div className="text-3xl font-display font-extrabold tracking-tight text-white [data-theme='light']:text-slate-900 overflow-x-auto">
+          <div className="text-3xl font-display font-extrabold tracking-tight text-slate-900 dark:text-zinc-100 overflow-x-auto">
             {current}
           </div>
         </div>

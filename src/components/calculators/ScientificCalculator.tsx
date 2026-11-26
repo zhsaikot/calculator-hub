@@ -124,12 +124,12 @@ export const ScientificCalculator: React.FC<ScientificCalculatorProps> = ({ onBa
       <div className="max-w-md mx-auto">
         {/* Angle mode toggle */}
         <div className="flex items-center justify-between mb-3 text-xs">
-          <span className="text-slate-400">Angle Mode:</span>
-          <div className="flex rounded-lg bg-white/5 border border-white/10 p-0.5">
+          <span className="text-slate-500 dark:text-zinc-400 font-medium">Angle Mode:</span>
+          <div className="flex rounded-lg bg-slate-100 dark:bg-zinc-800 border border-slate-200 dark:border-zinc-700 p-0.5">
             <button
               onClick={() => setMode('deg')}
               className={`px-2.5 py-1 rounded font-semibold transition-all ${
-                mode === 'deg' ? 'bg-indigo-600 text-white' : 'text-slate-400'
+                mode === 'deg' ? 'bg-blue-600 text-white shadow-sm' : 'text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-zinc-100'
               }`}
             >
               DEG
@@ -137,7 +137,7 @@ export const ScientificCalculator: React.FC<ScientificCalculatorProps> = ({ onBa
             <button
               onClick={() => setMode('rad')}
               className={`px-2.5 py-1 rounded font-semibold transition-all ${
-                mode === 'rad' ? 'bg-indigo-600 text-white' : 'text-slate-400'
+                mode === 'rad' ? 'bg-blue-600 text-white shadow-sm' : 'text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-zinc-100'
               }`}
             >
               RAD
@@ -146,9 +146,9 @@ export const ScientificCalculator: React.FC<ScientificCalculatorProps> = ({ onBa
         </div>
 
         {/* Display */}
-        <div className="p-4 rounded-2xl bg-white/[0.05] [data-theme='light']:bg-slate-100 border border-white/10 [data-theme='light']:border-slate-200 text-right mb-4 min-h-[90px] flex flex-col justify-end">
+        <div className="p-4 rounded-2xl bg-slate-100 dark:bg-zinc-850 border border-slate-200 dark:border-zinc-800 text-right mb-4 min-h-[90px] flex flex-col justify-end">
           <div className="text-xs text-slate-400 font-mono min-h-[18px]">{expr}</div>
-          <div className="text-2xl font-display font-extrabold tracking-tight text-white [data-theme='light']:text-slate-900 overflow-x-auto">
+          <div className="text-2xl font-display font-extrabold tracking-tight text-slate-900 dark:text-zinc-100 overflow-x-auto">
             {display}
           </div>
         </div>

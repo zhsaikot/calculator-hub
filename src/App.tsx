@@ -118,7 +118,7 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-zinc-950 [data-theme='light']:bg-white text-zinc-100 [data-theme='light']:text-slate-900 transition-colors">
+    <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-zinc-950 text-slate-900 dark:text-zinc-100 transition-colors">
       {/* Header */}
       <Header
         onOpenSearch={() => setIsSearchOpen(true)}
