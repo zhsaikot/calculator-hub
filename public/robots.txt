@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://zhsaikot.github.io/calculator-hub/sitemap.xml

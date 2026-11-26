@@ -1,0 +1,16 @@
+{
+  "name": "CalcHub – All-in-One Calculator Suite",
+  "short_name": "CalcHub",
+  "description": "11 precision calculators for financial, scientific, health, and everyday calculations.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#07080f",
+  "theme_color": "#07080f",
+  "icons": [
+    {
+      "src": "./favicon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}
