@@ -14,6 +14,7 @@ import {
   Percent,
   ArrowLeftRight,
   Home,
+  X,
   LucideIcon
 } from 'lucide-react';
 
@@ -34,67 +35,116 @@ const ICON_MAP: Record<string, LucideIcon> = {
 interface SidebarProps {
   currentId: CalculatorId | 'home';
   onSelect: (id: CalculatorId | 'home') => void;
+  isMobileOpen?: boolean;
+  onCloseMobile?: () => void;
 }
 
-export const Sidebar: React.FC<SidebarProps> = ({ currentId, onSelect }) => {
+export const Sidebar: React.FC<SidebarProps> = ({
+  currentId,
+  onSelect,
+  isMobileOpen = false,
+  onCloseMobile,
+}) => {
   const categories = ['General', 'Finance', 'Health', 'Utility'] as const;
 
-  return (
-    <aside className="w-64 flex-shrink-0 hidden lg:block sticky top-16 h-[calc(100vh-4rem)] overflow-y-auto p-4 border-r border-white/10 [data-theme='light']:border-slate-200">
-      <div className="space-y-6">
-        <div>
+  const content = (
+    <div className="space-y-6">
+      {/* Mobile drawer header */}
+      {isMobileOpen && (
+        <div className="flex items-center justify-between pb-3 border-b border-zinc-800 [data-theme='light']:border-slate-200">
+          <div className="flex items-center gap-2 font-display font-bold text-sm text-zinc-100 [data-theme='light']:text-slate-900">
+            <Calculator className="w-4 h-4 text-blue-500" />
+            Navigation
+          </div>
           <button
-            onClick={() => onSelect('home')}
-            className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium transition-all ${
-              currentId === 'home'
-                ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/30'
-                : 'text-slate-400 hover:text-white [data-theme="light"]:hover:text-slate-900 hover:bg-white/5'
-            }`}
+            onClick={onCloseMobile}
+            className="p-1 rounded-md text-zinc-400 hover:text-zinc-100 [data-theme='light']:hover:text-slate-900"
           >
-            <Home className="w-4 h-4" />
-            <span>Home Hub</span>
+            <X className="w-4 h-4" />
           </button>
         </div>
+      )}
 
-        {categories.map(cat => {
-          const items = CALCULATORS_REGISTRY.filter(c => c.category === cat);
-          if (items.length === 0) return null;
-
-          return (
-            <div key={cat} className="space-y-1.5">
-              <div className="px-3 text-[11px] font-bold tracking-wider uppercase text-slate-500">
-                {cat}
-              </div>
-              {items.map(item => {
-                const Icon = ICON_MAP[item.icon] || Calculator;
-                const isActive = currentId === item.id;
-
-                return (
-                  <button
-                    key={item.id}
-                    onClick={() => onSelect(item.id)}
-                    className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-medium transition-all text-left group ${
-                      isActive
-                        ? 'bg-indigo-600/15 text-indigo-400 border border-indigo-500/30 font-semibold'
-                        : 'text-slate-400 hover:text-white [data-theme="light"]:hover:text-slate-900 hover:bg-white/5'
-                    }`}
-                  >
-                    <div className="flex items-center gap-2.5 truncate">
-                      <Icon className={`w-4 h-4 flex-shrink-0 ${isActive ? 'text-indigo-400' : 'text-slate-500 group-hover:text-slate-300'}`} />
-                      <span className="truncate">{item.title}</span>
-                    </div>
-                    {item.badge && (
-                      <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
-                        {item.badge}
-                      </span>
-                    )}
-                  </button>
-                );
-              })}
-            </div>
-          );
-        })}
+      <div>
+        <button
+          onClick={() => {
+            onSelect('home');
+            if (isMobileOpen && onCloseMobile) onCloseMobile();
+          }}
+          className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-semibold transition-all ${
+            currentId === 'home'
+              ? 'bg-blue-600 text-white'
+              : 'text-zinc-400 hover:text-zinc-100 [data-theme="light"]:text-slate-600 [data-theme="light"]:hover:text-slate-900 hover:bg-zinc-800/60 [data-theme="light"]:hover:bg-slate-100'
+          }`}
+        >
+          <Home className="w-4 h-4" />
+          <span>Home Hub</span>
+        </button>
       </div>
-    </aside>
+
+      {categories.map(cat => {
+        const items = CALCULATORS_REGISTRY.filter(c => c.category === cat);
+        if (items.length === 0) return null;
+
+        return (
+          <div key={cat} className="space-y-1">
+            <div className="px-3 text-[11px] font-semibold tracking-wider uppercase text-zinc-500 [data-theme='light']:text-slate-400">
+              {cat}
+            </div>
+            {items.map(item => {
+              const Icon = ICON_MAP[item.icon] || Calculator;
+              const isActive = currentId === item.id;
+
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => {
+                    onSelect(item.id);
+                    if (isMobileOpen && onCloseMobile) onCloseMobile();
+                  }}
+                  className={`w-full flex items-center justify-between px-3 py-1.5 rounded-lg text-xs font-medium transition-all text-left ${
+                    isActive
+                      ? 'bg-zinc-800 text-zinc-100 [data-theme="light"]:bg-slate-200 [data-theme="light"]:text-slate-900 font-semibold'
+                      : 'text-zinc-400 hover:text-zinc-200 [data-theme="light"]:text-slate-600 [data-theme="light"]:hover:text-slate-900 hover:bg-zinc-800/50 [data-theme="light"]:hover:bg-slate-100'
+                  }`}
+                >
+                  <div className="flex items-center gap-2.5 truncate">
+                    <Icon className={`w-3.5 h-3.5 flex-shrink-0 ${isActive ? 'text-blue-500' : 'text-zinc-500'}`} />
+                    <span className="truncate">{item.title}</span>
+                  </div>
+                  {item.badge && (
+                    <span className="text-[9px] px-1.5 py-0.2 rounded bg-zinc-800 text-zinc-400 border border-zinc-700 [data-theme='light']:bg-slate-200 [data-theme='light']:border-slate-300">
+                      {item.badge}
+                    </span>
+                  )}
+                </button>
+              );
+            })}
+          </div>
+        );
+      })}
+    </div>
+  );
+
+  return (
+    <>
+      {/* Desktop Sidebar */}
+      <aside className="w-56 flex-shrink-0 hidden lg:block sticky top-16 h-[calc(100vh-4rem)] overflow-y-auto p-4 border-r border-zinc-800 [data-theme='light']:border-slate-200">
+        {content}
+      </aside>
+
+      {/* Mobile Drawer */}
+      {isMobileOpen && (
+        <div className="fixed inset-0 z-50 lg:hidden flex">
+          <div
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm"
+            onClick={onCloseMobile}
+          />
+          <div className="relative w-64 max-w-[80vw] h-full bg-zinc-950 [data-theme='light']:bg-white border-r border-zinc-800 [data-theme='light']:border-slate-200 p-4 overflow-y-auto shadow-2xl z-10">
+            {content}
+          </div>
+        </div>
+      )}
+    </>
   );
 };

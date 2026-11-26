@@ -3,107 +3,108 @@
 @tailwind utilities;
 
 :root {
-  --bg: #07080f;
-  --surface: rgba(255, 255, 255, 0.04);
-  --surface-2: rgba(255, 255, 255, 0.07);
-  --surface-3: rgba(255, 255, 255, 0.12);
-  --border: rgba(255, 255, 255, 0.09);
-  --border-2: rgba(255, 255, 255, 0.16);
-  --text: #f0f2ff;
-  --text-2: rgba(240, 242, 255, 0.65);
-  --text-3: rgba(240, 242, 255, 0.35);
-  --accent: #6c63ff;
-  --accent-2: #a78bfa;
-  --accent-3: #38bdf8;
-  --glow: rgba(108, 99, 255, 0.35);
+  --bg: #09090b;
+  --surface: #121215;
+  --surface-2: #18181b;
+  --surface-3: #27272a;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-2: rgba(255, 255, 255, 0.14);
+  --text: #fafafa;
+  --text-2: #a1a1aa;
+  --text-3: #71717a;
+  --accent: #2563eb;
 }
 
 [data-theme="light"] {
-  --bg: #f5f6ff;
-  --surface: rgba(255, 255, 255, 0.75);
-  --surface-2: rgba(255, 255, 255, 0.9);
-  --surface-3: rgba(255, 255, 255, 0.98);
-  --border: rgba(108, 99, 255, 0.12);
-  --border-2: rgba(108, 99, 255, 0.22);
-  --text: #121324;
-  --text-2: rgba(18, 19, 36, 0.7);
-  --text-3: rgba(18, 19, 36, 0.4);
-  --glow: rgba(108, 99, 255, 0.15);
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --surface-2: #f8fafc;
+  --surface-3: #f1f5f9;
+  --border: #e2e8f0;
+  --border-2: #cbd5e1;
+  --text: #0f172a;
+  --text-2: #64748b;
+  --text-3: #94a3b8;
+  --accent: #2563eb;
 }
 
 body {
   margin: 0;
-  font-family: 'DM Sans', system-ui, sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
   background-color: var(--bg);
   color: var(--text);
   min-height: 100vh;
   overflow-x: hidden;
-  transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1), color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color 0.2s ease, color 0.2s ease;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Keypad Button Utility Classes */
+/* Keypad Button Utility Classes (Clean, Flat, Minimalist) */
 .btn-calc {
-  @apply h-14 rounded-xl font-display font-bold text-base transition-all duration-150 flex items-center justify-center select-none active:scale-95;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  @apply h-12 sm:h-14 rounded-xl font-display font-semibold text-base sm:text-lg transition-all duration-150 flex items-center justify-center select-none active:scale-95;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
   color: var(--text);
 }
-[data-theme="light"] .btn-calc {
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(108, 99, 255, 0.15);
-  color: #1a1b2e;
-}
 .btn-calc:hover {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.25);
-}
-[data-theme="light"] .btn-calc:hover {
-  background: #ffffff;
-  border-color: var(--accent);
+  background: var(--surface-3);
+  border-color: var(--border-2);
 }
 
 .btn-calc-op {
-  background: rgba(108, 99, 255, 0.18);
-  border-color: rgba(108, 99, 255, 0.3);
-  color: #a78bfa;
+  background: rgba(37, 99, 235, 0.1);
+  border-color: rgba(37, 99, 235, 0.25);
+  color: #60a5fa;
+}
+[data-theme="light"] .btn-calc-op {
+  background: #eff6ff;
+  border-color: #bfdbfe;
+  color: #2563eb;
 }
 .btn-calc-op:hover {
-  background: rgba(108, 99, 255, 0.3);
+  background: rgba(37, 99, 235, 0.2);
 }
 
 .btn-calc-action {
-  background: rgba(248, 113, 113, 0.15);
-  border-color: rgba(248, 113, 113, 0.25);
+  background: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.2);
   color: #f87171;
 }
+[data-theme="light"] .btn-calc-action {
+  background: #fef2f2;
+  border-color: #fecaca;
+  color: #dc2626;
+}
 .btn-calc-action:hover {
-  background: rgba(248, 113, 113, 0.25);
+  background: rgba(239, 68, 68, 0.18);
 }
 
 .btn-calc-fn {
-  background: rgba(167, 139, 250, 0.12);
-  border-color: rgba(167, 139, 250, 0.2);
-  color: #c4b5fd;
+  background: var(--surface-2);
+  border-color: var(--border);
+  color: var(--text-2);
   font-size: 0.8rem;
 }
 .btn-calc-fn:hover {
-  background: rgba(167, 139, 250, 0.22);
+  background: var(--surface-3);
+  color: var(--text);
 }
 
 .btn-calc-eq {
-  background: linear-gradient(135deg, #6c63ff, #38bdf8);
+  background: #2563eb;
   color: #ffffff;
-  border: none;
-  box-shadow: 0 4px 18px rgba(108, 99, 255, 0.4);
+  border: 1px solid #1d4ed8;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 .btn-calc-eq:hover {
-  box-shadow: 0 6px 24px rgba(108, 99, 255, 0.55);
+  background: #1d4ed8;
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
 }
 ::-webkit-scrollbar-track {
   background: transparent;
@@ -113,43 +114,5 @@ body {
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent);
-}
-
-/* Floating Orb Background Animations */
-.bg-canvas {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  overflow: hidden;
-}
-
-.bg-orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(90px);
-  opacity: 0.16;
-  animation: orbFloat 14s ease-in-out infinite alternate;
-}
-
-[data-theme="light"] .bg-orb {
-  opacity: 0.08;
-}
-
-@keyframes orbFloat {
-  0% { transform: translate(0, 0) scale(1); }
-  100% { transform: translate(40px, -50px) scale(1.15); }
-}
-
-.grid-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background-image: linear-gradient(var(--border) 1px, transparent 1px),
-    linear-gradient(90deg, var(--border) 1px, transparent 1px);
-  background-size: 60px 60px;
-  mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.3) 0%, transparent 75%);
-  opacity: 0.4;
+  background: var(--text-3);
 }

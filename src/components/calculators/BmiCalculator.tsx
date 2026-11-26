@@ -126,12 +126,12 @@ export const BmiCalculator: React.FC<BmiCalculatorProps> = ({
       </div>
 
       {result && (
-        <div className="p-6 rounded-2xl bg-gradient-to-br from-indigo-900/30 to-sky-900/20 border border-indigo-500/30">
+        <div className="p-5 sm:p-6 rounded-xl bg-zinc-900 [data-theme='light']:bg-slate-50 border border-zinc-800 [data-theme='light']:border-slate-200">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-xs font-bold uppercase tracking-wider text-indigo-400">Your Calculated BMI</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-zinc-400">Your Calculated BMI</span>
             <button
               onClick={handleSave}
-              className="text-[11px] font-semibold px-2.5 py-1 rounded-lg bg-indigo-500/20 hover:bg-indigo-500/30 text-indigo-300 transition-colors"
+              className="text-[11px] font-medium px-2.5 py-1 rounded bg-zinc-800 hover:bg-zinc-700 text-zinc-300 transition-colors"
             >
               Save Result
             </button>
@@ -139,25 +139,25 @@ export const BmiCalculator: React.FC<BmiCalculatorProps> = ({
 
           <div className="flex items-baseline gap-3">
             <span
-              className="text-4xl md:text-5xl font-display font-extrabold tracking-tight"
+              className="text-3xl sm:text-4xl font-display font-bold tracking-tight"
               style={{ color: result.categoryColor }}
             >
               {result.bmi}
             </span>
-            <span className="text-base font-semibold text-white [data-theme='light']:text-slate-900">
+            <span className="text-sm sm:text-base font-semibold text-zinc-200 [data-theme='light']:text-slate-900">
               {result.category}
             </span>
           </div>
 
-          {/* Visual BMI Gauge Meter */}
-          <div className="mt-6 mb-2">
-            <div className="h-3 rounded-full bg-gradient-to-r from-blue-500 via-emerald-400 via-amber-400 to-rose-600 relative">
+          {/* Minimal BMI Bar */}
+          <div className="mt-5 mb-2">
+            <div className="h-2 rounded-full bg-zinc-800 [data-theme='light']:bg-slate-200 relative overflow-hidden">
               <div
-                className="absolute -top-1 w-5 h-5 rounded-full bg-white border-2 border-slate-900 shadow-lg -translate-x-1/2 transition-all duration-500"
-                style={{ left: `${result.needlePercent}%` }}
+                className="h-full rounded-full transition-all duration-300"
+                style={{ width: `${result.needlePercent}%`, backgroundColor: result.categoryColor }}
               />
             </div>
-            <div className="flex justify-between text-[10px] text-slate-400 mt-2 font-semibold">
+            <div className="flex justify-between text-[10px] text-zinc-500 mt-1.5 font-medium">
               <span>Underweight (&lt;18.5)</span>
               <span>Normal (18.5–24.9)</span>
               <span>Overweight (25–29.9)</span>
@@ -165,17 +165,17 @@ export const BmiCalculator: React.FC<BmiCalculatorProps> = ({
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-6 pt-4 border-t border-white/10">
-            <div className="p-3 rounded-xl bg-white/5 border border-white/10">
-              <div className="text-[10px] text-slate-400 uppercase font-semibold">Healthy Weight Target</div>
-              <div className="text-sm font-bold text-white [data-theme='light']:text-slate-900 mt-0.5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-5 pt-4 border-t border-zinc-800 [data-theme='light']:border-slate-200">
+            <div className="p-3 rounded-lg bg-zinc-800/50 [data-theme='light']:bg-white border border-zinc-800 [data-theme='light']:border-slate-200">
+              <div className="text-[10px] text-zinc-400 uppercase font-medium">Healthy Weight Target</div>
+              <div className="text-xs sm:text-sm font-semibold text-zinc-200 [data-theme='light']:text-slate-900 mt-0.5">
                 {result.healthyWeightRange}
               </div>
             </div>
 
-            <div className="p-3 rounded-xl bg-white/5 border border-white/10">
-              <div className="text-[10px] text-slate-400 uppercase font-semibold">Health Tip</div>
-              <div className="text-xs text-slate-300 [data-theme='light']:text-slate-700 mt-0.5">
+            <div className="p-3 rounded-lg bg-zinc-800/50 [data-theme='light']:bg-white border border-zinc-800 [data-theme='light']:border-slate-200">
+              <div className="text-[10px] text-zinc-400 uppercase font-medium">Health Tip</div>
+              <div className="text-xs text-zinc-400 [data-theme='light']:text-slate-600 mt-0.5">
                 {result.healthTip}
               </div>
             </div>

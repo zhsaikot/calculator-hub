@@ -29,6 +29,7 @@ export const App: React.FC = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isHistoryOpen, setIsHistoryOpen] = useState(false);
   const [isShareOpen, setIsShareOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const activeCalculatorMeta = CALCULATORS_REGISTRY.find(c => c.id === route.calculatorId);
 
@@ -117,26 +118,24 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col relative selection:bg-indigo-500/30">
-      {/* Background Orbs & Overlay */}
-      <div className="bg-canvas" aria-hidden="true">
-        <div className="bg-orb w-[600px] h-[600px] bg-indigo-600 top-[-180px] left-[-120px]" />
-        <div className="bg-orb w-[500px] h-[500px] bg-sky-500 bottom-[-150px] right-[-100px]" style={{ animationDelay: '-6s' }} />
-        <div className="bg-orb w-[350px] h-[350px] bg-pink-500 top-[50%] left-[50%]" style={{ animationDelay: '-3s' }} />
-      </div>
-      <div className="grid-overlay" aria-hidden="true" />
-
+    <div className="min-h-screen flex flex-col bg-zinc-950 [data-theme='light']:bg-white text-zinc-100 [data-theme='light']:text-slate-900 transition-colors">
       {/* Header */}
       <Header
         onOpenSearch={() => setIsSearchOpen(true)}
         onOpenHistory={() => setIsHistoryOpen(true)}
         onNavigateHome={() => navigateTo('home')}
+        onToggleMobileMenu={() => setIsMobileMenuOpen(prev => !prev)}
       />
 
       {/* Main Container */}
-      <div className="flex-1 flex max-w-7xl w-full mx-auto relative z-10">
-        <Sidebar currentId={route.calculatorId} onSelect={id => navigateTo(id)} />
-        <main className="flex-1 px-4 sm:px-6 lg:px-8 py-8 w-full max-w-5xl mx-auto overflow-hidden">
+      <div className="flex-1 flex max-w-7xl w-full mx-auto">
+        <Sidebar
+          currentId={route.calculatorId}
+          onSelect={id => navigateTo(id)}
+          isMobileOpen={isMobileMenuOpen}
+          onCloseMobile={() => setIsMobileMenuOpen(false)}
+        />
+        <main className="flex-1 px-4 sm:px-6 lg:px-8 py-6 w-full max-w-4xl mx-auto overflow-hidden">
           {renderCalculator()}
         </main>
       </div>

@@ -120,46 +120,46 @@ export const LoanCalculator: React.FC<LoanCalculatorProps> = ({
 
       {result && (
         <div className="space-y-6">
-          <div className="p-6 rounded-2xl bg-gradient-to-br from-indigo-900/30 to-sky-900/20 border border-indigo-500/30">
+          <div className="p-5 sm:p-6 rounded-xl bg-zinc-900 [data-theme='light']:bg-slate-50 border border-zinc-800 [data-theme='light']:border-slate-200">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-bold uppercase tracking-wider text-indigo-400">Monthly EMI Payment</span>
+              <span className="text-xs font-semibold uppercase tracking-wider text-zinc-400">Monthly EMI Payment</span>
               <button
                 onClick={handleSave}
-                className="text-[11px] font-semibold px-2.5 py-1 rounded-lg bg-indigo-500/20 hover:bg-indigo-500/30 text-indigo-300 transition-colors"
+                className="text-[11px] font-medium px-2.5 py-1 rounded bg-zinc-800 hover:bg-zinc-700 text-zinc-300 transition-colors"
               >
                 Save Result
               </button>
             </div>
 
-            <div className="text-3xl md:text-4xl font-display font-extrabold text-white [data-theme='light']:text-slate-900">
-              ${result.monthlyEmi.toLocaleString()} <span className="text-sm font-normal text-slate-400">/ month</span>
+            <div className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-zinc-100 [data-theme='light']:text-slate-900">
+              ${result.monthlyEmi.toLocaleString()} <span className="text-xs sm:text-sm font-normal text-zinc-400">/ month</span>
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6">
-              <div className="p-3 rounded-xl bg-white/5 border border-white/10">
-                <div className="text-[10px] text-slate-400 uppercase font-semibold">Total Payment</div>
-                <div className="text-sm font-bold font-display text-white [data-theme='light']:text-slate-900 mt-0.5">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 mt-5">
+              <div className="p-3 rounded-lg bg-zinc-800/50 [data-theme='light']:bg-white border border-zinc-800 [data-theme='light']:border-slate-200">
+                <div className="text-[10px] text-zinc-400 uppercase font-medium">Total Payment</div>
+                <div className="text-xs sm:text-sm font-semibold font-display text-zinc-100 [data-theme='light']:text-slate-900 mt-0.5">
                   ${result.totalPayment.toLocaleString()}
                 </div>
               </div>
 
-              <div className="p-3 rounded-xl bg-white/5 border border-white/10">
-                <div className="text-[10px] text-slate-400 uppercase font-semibold">Total Interest</div>
-                <div className="text-sm font-bold font-display text-rose-400 mt-0.5">
+              <div className="p-3 rounded-lg bg-zinc-800/50 [data-theme='light']:bg-white border border-zinc-800 [data-theme='light']:border-slate-200">
+                <div className="text-[10px] text-zinc-400 uppercase font-medium">Total Interest</div>
+                <div className="text-xs sm:text-sm font-semibold font-display text-rose-400 mt-0.5">
                   ${result.totalInterest.toLocaleString()}
                 </div>
               </div>
 
-              <div className="p-3 rounded-xl bg-white/5 border border-white/10">
-                <div className="text-[10px] text-slate-400 uppercase font-semibold">Principal Borrowed</div>
-                <div className="text-sm font-bold font-display text-white [data-theme='light']:text-slate-900 mt-0.5">
+              <div className="p-3 rounded-lg bg-zinc-800/50 [data-theme='light']:bg-white border border-zinc-800 [data-theme='light']:border-slate-200">
+                <div className="text-[10px] text-zinc-400 uppercase font-medium">Principal Borrowed</div>
+                <div className="text-xs sm:text-sm font-semibold font-display text-zinc-100 [data-theme='light']:text-slate-900 mt-0.5">
                   ${result.totalPrincipal.toLocaleString()}
                 </div>
               </div>
 
-              <div className="p-3 rounded-xl bg-white/5 border border-white/10">
-                <div className="text-[10px] text-slate-400 uppercase font-semibold">Interest to Loan %</div>
-                <div className="text-sm font-bold font-display text-amber-400 mt-0.5">
+              <div className="p-3 rounded-lg bg-zinc-800/50 [data-theme='light']:bg-white border border-zinc-800 [data-theme='light']:border-slate-200">
+                <div className="text-[10px] text-zinc-400 uppercase font-medium">Interest to Loan %</div>
+                <div className="text-xs sm:text-sm font-semibold font-display text-amber-400 mt-0.5">
                   {result.interestRatioPercentage}%
                 </div>
               </div>

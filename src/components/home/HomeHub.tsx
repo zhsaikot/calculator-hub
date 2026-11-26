@@ -14,10 +14,7 @@ import {
   Tag,
   Percent,
   ArrowLeftRight,
-  ArrowUpRight,
-  Sparkles,
-  Zap,
-  ShieldCheck,
+  ArrowRight,
   Search,
   LucideIcon
 } from 'lucide-react';
@@ -53,70 +50,44 @@ export const HomeHub: React.FC<HomeHubProps> = ({ onSelectCalculator }) => {
   });
 
   return (
-    <div className="space-y-12 animate-fade-up">
-      {/* Hero Section */}
-      <section className="text-center py-8 md:py-16 px-4">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-xs font-semibold text-indigo-400 mb-6 shadow-sm">
-          <Sparkles className="w-3.5 h-3.5 text-indigo-400" />
-          <span>11 Precision Calculators · 100% Free & Ad-Free</span>
+    <div className="space-y-10">
+      {/* Minimal Hero Section */}
+      <section className="text-center py-6 sm:py-12 px-4 max-w-3xl mx-auto">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-800/80 [data-theme='light']:bg-slate-100 border border-zinc-700/60 [data-theme='light']:border-slate-200 text-xs font-medium text-zinc-300 [data-theme='light']:text-slate-700 mb-4">
+          <span>11 Precision Online Calculators</span>
         </div>
 
-        <h1 className="font-display font-extrabold text-4xl sm:text-5xl md:text-6xl tracking-tight max-w-3xl mx-auto leading-tight text-white [data-theme='light']:text-slate-900">
-          Smart Calculations for <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-sky-400 to-pink-400">
-            Every Aspect of Life
-          </span>
+        <h1 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl tracking-tight text-zinc-100 [data-theme='light']:text-slate-900">
+          Fast, Accurate Tools for Everyday Math & Finance
         </h1>
 
-        <p className="mt-5 text-base sm:text-lg text-slate-400 [data-theme='light']:text-slate-600 max-w-xl mx-auto leading-relaxed">
-          From complex financial loan schedules to daily arithmetic and health metrics. Fast, beautiful, and completely private in your browser.
+        <p className="mt-3.5 text-sm sm:text-base text-zinc-400 [data-theme='light']:text-slate-600 max-w-xl mx-auto leading-relaxed">
+          From loan amortization schedules and tax breakdowns to body mass index and unit conversions. Ad-free, private, and instant.
         </p>
 
-        {/* Quick Search in Hero */}
-        <div className="mt-8 max-w-md mx-auto relative">
-          <Search className="w-5 h-5 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500" />
+        {/* Clean Search Input */}
+        <div className="mt-6 max-w-md mx-auto relative">
+          <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-400" />
           <input
             type="text"
-            placeholder="Search any calculator (loan, bmi, tax)..."
+            placeholder="Search by name or category (e.g. loan, tax, bmi)..."
             value={searchFilter}
             onChange={e => setSearchFilter(e.target.value)}
-            className="w-full pl-11 pr-4 py-3 rounded-2xl bg-white/[0.06] [data-theme='light']:bg-white border border-white/10 [data-theme='light']:border-slate-300 text-sm outline-none focus:border-indigo-500 transition-all shadow-lg"
+            className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-zinc-900 [data-theme='light']:bg-white border border-zinc-800 [data-theme='light']:border-slate-200 text-sm text-zinc-100 [data-theme='light']:text-slate-900 outline-none focus:border-blue-600 transition-colors shadow-sm"
           />
-        </div>
-
-        {/* Stats */}
-        <div className="mt-12 flex items-center justify-center gap-8 sm:gap-16 flex-wrap">
-          <div className="text-center">
-            <div className="font-display font-extrabold text-2xl sm:text-3xl text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-sky-400">
-              11
-            </div>
-            <div className="text-xs text-slate-500 mt-0.5">Calculators</div>
-          </div>
-          <div className="text-center">
-            <div className="font-display font-extrabold text-2xl sm:text-3xl text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-sky-400">
-              0ms
-            </div>
-            <div className="text-xs text-slate-500 mt-0.5">Server Latency</div>
-          </div>
-          <div className="text-center">
-            <div className="font-display font-extrabold text-2xl sm:text-3xl text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-sky-400">
-              100%
-            </div>
-            <div className="text-xs text-slate-500 mt-0.5">Private & Offline</div>
-          </div>
         </div>
       </section>
 
-      {/* Category Filter Pills */}
-      <div className="flex items-center justify-center gap-2 flex-wrap">
+      {/* Category Filter Tabs */}
+      <div className="flex items-center justify-center gap-1.5 flex-wrap">
         {(['All', 'General', 'Finance', 'Health', 'Utility'] as const).map(cat => (
           <button
             key={cat}
             onClick={() => setActiveCategory(cat)}
-            className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-all ${
+            className={`px-3.5 py-1.5 rounded-lg text-xs font-medium transition-colors ${
               activeCategory === cat
-                ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30'
-                : 'bg-white/5 [data-theme="light"]:bg-slate-200/70 text-slate-400 [data-theme="light"]:text-slate-700 hover:bg-white/10'
+                ? 'bg-zinc-800 text-zinc-100 [data-theme="light"]:bg-slate-900 [data-theme="light"]:text-white font-semibold'
+                : 'text-zinc-400 [data-theme="light"]:text-slate-600 hover:text-zinc-100 hover:bg-zinc-800/40 [data-theme="light"]:hover:bg-slate-100'
             }`}
           >
             {cat}
@@ -124,9 +95,9 @@ export const HomeHub: React.FC<HomeHubProps> = ({ onSelectCalculator }) => {
         ))}
       </div>
 
-      {/* Calculator Grid */}
+      {/* Clean Calculator Grid */}
       <section>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {filtered.map(calc => {
             const Icon = ICON_MAP[calc.icon] || Calculator;
 
@@ -134,82 +105,39 @@ export const HomeHub: React.FC<HomeHubProps> = ({ onSelectCalculator }) => {
               <GlassCard
                 key={calc.id}
                 hoverEffect
-                className="p-6 cursor-pointer group relative flex flex-col justify-between"
+                className="p-5 cursor-pointer flex flex-col justify-between group"
               >
                 <div onClick={() => onSelectCalculator(calc.id)}>
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="w-12 h-12 rounded-2xl bg-indigo-500/10 [data-theme='light']:bg-indigo-50 border border-indigo-500/20 flex items-center justify-center text-indigo-400 group-hover:scale-110 group-hover:rotate-[-6deg] transition-transform">
-                      <Icon className="w-6 h-6" />
+                  <div className="flex items-center justify-between mb-3.5">
+                    <div className="w-9 h-9 rounded-lg bg-zinc-800/80 [data-theme='light']:bg-slate-100 border border-zinc-700/50 [data-theme='light']:border-slate-200 flex items-center justify-center text-blue-500">
+                      <Icon className="w-4 h-4" />
                     </div>
                     {calc.badge && (
-                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-indigo-500/15 text-indigo-300 border border-indigo-500/25">
+                      <span className="text-[10px] font-medium px-2 py-0.5 rounded bg-zinc-800 text-zinc-400 border border-zinc-700 [data-theme='light']:bg-slate-100 [data-theme='light']:border-slate-200">
                         {calc.badge}
                       </span>
                     )}
                   </div>
 
-                  <h3 className="font-display font-bold text-lg text-white [data-theme='light']:text-slate-900 group-hover:text-indigo-400 transition-colors">
+                  <h3 className="font-display font-semibold text-base text-zinc-100 [data-theme='light']:text-slate-900 group-hover:text-blue-500 transition-colors">
                     {calc.title}
                   </h3>
-                  <p className="mt-2 text-xs text-slate-400 [data-theme='light']:text-slate-600 leading-relaxed">
+                  <p className="mt-1 text-xs text-zinc-400 [data-theme='light']:text-slate-600 leading-relaxed line-clamp-2">
                     {calc.shortDesc}
                   </p>
                 </div>
 
                 <div
                   onClick={() => onSelectCalculator(calc.id)}
-                  className="mt-6 pt-4 border-t border-white/5 [data-theme='light']:border-slate-100 flex items-center justify-between text-xs text-slate-400 group-hover:text-indigo-400 font-semibold"
+                  className="mt-4 pt-3 border-t border-zinc-800/80 [data-theme='light']:border-slate-100 flex items-center justify-between text-xs text-zinc-400 group-hover:text-blue-500 font-medium"
                 >
-                  <span>Open Calculator</span>
-                  <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                  <span>Use tool</span>
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </div>
               </GlassCard>
             );
           })}
         </div>
-      </section>
-
-      {/* Marketing Trust Badges */}
-      <section className="py-8">
-        <GlassCard className="p-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center md:text-left">
-            <div className="flex flex-col md:flex-row items-center gap-4">
-              <div className="p-3 rounded-2xl bg-indigo-500/10 text-indigo-400 flex-shrink-0">
-                <Zap className="w-6 h-6" />
-              </div>
-              <div>
-                <h4 className="font-display font-bold text-sm">Ultra-Fast Computation</h4>
-                <p className="text-xs text-slate-400 [data-theme='light']:text-slate-600 mt-1">
-                  100% client-side execution with instantaneous responses and zero network lag.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex flex-col md:flex-row items-center gap-4">
-              <div className="p-3 rounded-2xl bg-emerald-500/10 text-emerald-400 flex-shrink-0">
-                <ShieldCheck className="w-6 h-6" />
-              </div>
-              <div>
-                <h4 className="font-display font-bold text-sm">Zero Data Collection</h4>
-                <p className="text-xs text-slate-400 [data-theme='light']:text-slate-600 mt-1">
-                  Your numbers, loans, and health metrics never leave your device.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex flex-col md:flex-row items-center gap-4">
-              <div className="p-3 rounded-2xl bg-sky-500/10 text-sky-400 flex-shrink-0">
-                <Sparkles className="w-6 h-6" />
-              </div>
-              <div>
-                <h4 className="font-display font-bold text-sm">PWA Offline Mode</h4>
-                <p className="text-xs text-slate-400 [data-theme='light']:text-slate-600 mt-1">
-                  Add to home screen and calculate anywhere, even without an active internet connection.
-                </p>
-              </div>
-            </div>
-          </div>
-        </GlassCard>
       </section>
     </div>
   );
