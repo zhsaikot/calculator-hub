@@ -6,6 +6,7 @@ interface HistoryContextType {
   addHistory: (item: Omit<CalculationHistoryItem, 'id' | 'timestamp'>) => void;
   clearHistory: () => void;
   removeHistoryItem: (id: string) => void;
+  updateHistoryItem: (id: string, updates: Partial<CalculationHistoryItem>) => void;
 }
 
 const HistoryContext = createContext<HistoryContextType | undefined>(undefined);
@@ -43,8 +44,16 @@ export const HistoryProvider: React.FC<{ children: React.ReactNode }> = ({ child
     setHistory(prev => prev.filter(item => item.id !== id));
   };
 
+  const updateHistoryItem = (id: string, updates: Partial<CalculationHistoryItem>) => {
+    setHistory(prev =>
+      prev.map(item => (item.id === id ? { ...item, ...updates } : item))
+    );
+  };
+
   return (
-    <HistoryContext.Provider value={{ history, addHistory, clearHistory, removeHistoryItem }}>
+    <HistoryContext.Provider
+      value={{ history, addHistory, clearHistory, removeHistoryItem, updateHistoryItem }}
+    >
       {children}
     </HistoryContext.Provider>
   );

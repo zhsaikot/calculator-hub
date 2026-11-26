@@ -40,4 +40,5 @@ export interface CalculationHistoryItem {
   summary: string;
   result: string;
   timestamp: number;
+  note?: string;
 }

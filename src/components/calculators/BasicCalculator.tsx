@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { CalculatorWrapper } from '../common/CalculatorWrapper';
 import { CalculatorSEO } from '../common/CalculatorSEO';
+import { CalculatorLiveHistory } from '../common/CalculatorLiveHistory';
 import { useHistory } from '../../context/HistoryContext';
 import { BasicOperator, executeBasicOperation, formatFloat } from '../../lib/calculators/basic';
 
@@ -104,40 +105,56 @@ export const BasicCalculator: React.FC<BasicCalculatorProps> = ({ onBack, onShar
       onBack={onBack}
       onShare={onShare}
     >
-      <div className="max-w-xs mx-auto">
-        {/* Display */}
-        <div className="p-4 rounded-2xl bg-slate-100 dark:bg-zinc-850 border border-slate-200 dark:border-zinc-800 text-right mb-4 min-h-[90px] flex flex-col justify-end">
-          <div className="text-xs text-slate-400 font-mono min-h-[18px]">{expr}</div>
-          <div className="text-3xl font-display font-extrabold tracking-tight text-slate-900 dark:text-zinc-100 overflow-x-auto">
-            {current}
+      {/* Side-by-Side Container: Keypad on Left, Live History on Right */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start max-w-4xl mx-auto">
+        {/* Left Column: Calculator Keypad & Display */}
+        <div className="lg:col-span-6 w-full max-w-xs sm:max-w-sm mx-auto lg:mx-0 lg:ml-auto">
+          {/* Display */}
+          <div className="p-4 rounded-2xl bg-slate-100 dark:bg-zinc-850 border border-slate-200 dark:border-zinc-800 text-right mb-4 min-h-[90px] flex flex-col justify-end shadow-xs">
+            <div className="text-xs text-slate-400 font-mono min-h-[18px]">{expr}</div>
+            <div className="text-3xl font-display font-extrabold tracking-tight text-slate-900 dark:text-zinc-100 overflow-x-auto">
+              {current}
+            </div>
+          </div>
+
+          {/* Keypad */}
+          <div className="grid grid-cols-4 gap-2.5">
+            <button onClick={() => handleAction('AC')} className="btn-calc btn-calc-action">AC</button>
+            <button onClick={() => handleAction('+/-')} className="btn-calc btn-calc-action">+/−</button>
+            <button onClick={() => handleAction('%')} className="btn-calc btn-calc-action">%</button>
+            <button onClick={() => handleOperator('/')} className="btn-calc btn-calc-op">÷</button>
+
+            <button onClick={() => handleDigit('7')} className="btn-calc">7</button>
+            <button onClick={() => handleDigit('8')} className="btn-calc">8</button>
+            <button onClick={() => handleDigit('9')} className="btn-calc">9</button>
+            <button onClick={() => handleOperator('*')} className="btn-calc btn-calc-op">×</button>
+
+            <button onClick={() => handleDigit('4')} className="btn-calc">4</button>
+            <button onClick={() => handleDigit('5')} className="btn-calc">5</button>
+            <button onClick={() => handleDigit('6')} className="btn-calc">6</button>
+            <button onClick={() => handleOperator('-')} className="btn-calc btn-calc-op">−</button>
+
+            <button onClick={() => handleDigit('1')} className="btn-calc">1</button>
+            <button onClick={() => handleDigit('2')} className="btn-calc">2</button>
+            <button onClick={() => handleDigit('3')} className="btn-calc">3</button>
+            <button onClick={() => handleOperator('+')} className="btn-calc btn-calc-op">+</button>
+
+            <button onClick={() => handleDigit('0')} className="btn-calc col-span-2">0</button>
+            <button onClick={() => handleDigit('.')} className="btn-calc">.</button>
+            <button onClick={() => handleAction('=')} className="btn-calc btn-calc-eq">=</button>
           </div>
         </div>
 
-        {/* Keypad */}
-        <div className="grid grid-cols-4 gap-2.5">
-          <button onClick={() => handleAction('AC')} className="btn-calc btn-calc-action">AC</button>
-          <button onClick={() => handleAction('+/-')} className="btn-calc btn-calc-action">+/−</button>
-          <button onClick={() => handleAction('%')} className="btn-calc btn-calc-action">%</button>
-          <button onClick={() => handleOperator('/')} className="btn-calc btn-calc-op">÷</button>
-
-          <button onClick={() => handleDigit('7')} className="btn-calc">7</button>
-          <button onClick={() => handleDigit('8')} className="btn-calc">8</button>
-          <button onClick={() => handleDigit('9')} className="btn-calc">9</button>
-          <button onClick={() => handleOperator('*')} className="btn-calc btn-calc-op">×</button>
-
-          <button onClick={() => handleDigit('4')} className="btn-calc">4</button>
-          <button onClick={() => handleDigit('5')} className="btn-calc">5</button>
-          <button onClick={() => handleDigit('6')} className="btn-calc">6</button>
-          <button onClick={() => handleOperator('-')} className="btn-calc btn-calc-op">−</button>
-
-          <button onClick={() => handleDigit('1')} className="btn-calc">1</button>
-          <button onClick={() => handleDigit('2')} className="btn-calc">2</button>
-          <button onClick={() => handleDigit('3')} className="btn-calc">3</button>
-          <button onClick={() => handleOperator('+')} className="btn-calc btn-calc-op">+</button>
-
-          <button onClick={() => handleDigit('0')} className="btn-calc col-span-2">0</button>
-          <button onClick={() => handleDigit('.')} className="btn-calc">.</button>
-          <button onClick={() => handleAction('=')} className="btn-calc btn-calc-eq">=</button>
+        {/* Right Column: Live History & Tape Panel */}
+        <div className="lg:col-span-6 w-full max-w-xs sm:max-w-sm mx-auto lg:mx-0 lg:mr-auto">
+          <CalculatorLiveHistory
+            calculatorId="basic"
+            calculatorTitle="Basic Calculator"
+            onSelectResult={val => {
+              setCurrent(val);
+              setNewNum(true);
+            }}
+          />
         </div>
       </div>
 
