@@ -74,7 +74,17 @@ export const Footer: React.FC<FooterProps> = ({ onSelectCalculator }) => {
 
         <div className="mt-8 pt-4 border-t border-slate-200 dark:border-zinc-800 flex flex-col sm:flex-row items-center justify-between text-xs text-zinc-500 gap-2">
           <p>© {new Date().getFullYear()} CalcHub. All rights reserved.</p>
-          <p className="text-[11px] text-zinc-600">Fast, minimal & client-side.</p>
+          <p className="text-xs text-slate-500 dark:text-zinc-500">
+            Developed by{' '}
+            <a
+              href="https://mdziaulhasan.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-slate-700 dark:text-zinc-300 hover:text-blue-600 dark:hover:text-blue-400 underline underline-offset-2 transition-colors"
+            >
+              Md Ziaul Hasan
+            </a>
+          </p>
         </div>
       </div>
     </footer>
