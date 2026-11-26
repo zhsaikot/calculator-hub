@@ -30,6 +30,23 @@ export const App: React.FC = () => {
   const [isHistoryOpen, setIsHistoryOpen] = useState(false);
   const [isShareOpen, setIsShareOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(() => {
+    try {
+      return localStorage.getItem('calchub_sidebar_collapsed') === 'true';
+    } catch {
+      return false;
+    }
+  });
+
+  const handleToggleSidebar = () => {
+    setIsSidebarCollapsed(prev => {
+      const next = !prev;
+      try {
+        localStorage.setItem('calchub_sidebar_collapsed', String(next));
+      } catch {}
+      return next;
+    });
+  };
 
   const activeCalculatorMeta = CALCULATORS_REGISTRY.find(c => c.id === route.calculatorId);
 
@@ -128,15 +145,19 @@ export const App: React.FC = () => {
       />
 
       {/* Main Container */}
-      <div className="flex-1 flex max-w-7xl w-full mx-auto">
+      <div className="flex-1 flex w-full relative min-h-[calc(100vh-3.5rem)]">
         <Sidebar
           currentId={route.calculatorId}
           onSelect={id => navigateTo(id)}
           isMobileOpen={isMobileMenuOpen}
           onCloseMobile={() => setIsMobileMenuOpen(false)}
+          isCollapsed={isSidebarCollapsed}
+          onToggleCollapse={handleToggleSidebar}
         />
-        <main className="flex-1 px-4 sm:px-6 lg:px-8 py-6 w-full max-w-4xl mx-auto overflow-hidden">
-          {renderCalculator()}
+        <main className="flex-1 px-4 sm:px-6 lg:px-10 py-6 min-w-0 overflow-y-auto">
+          <div className="max-w-6xl mx-auto">
+            {renderCalculator()}
+          </div>
         </main>
       </div>
 

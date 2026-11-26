@@ -10,7 +10,7 @@ interface FooterProps {
 export const Footer: React.FC<FooterProps> = ({ onSelectCalculator }) => {
   return (
     <footer className="mt-16 border-t border-slate-200 dark:border-zinc-800 bg-slate-50 dark:bg-zinc-950 py-10 transition-colors">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand Info */}
           <div className="md:col-span-2 space-y-3">
