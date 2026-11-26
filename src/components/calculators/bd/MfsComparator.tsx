@@ -124,15 +124,15 @@ export const MfsComparator: React.FC<MfsComparatorProps> = ({ onBack, onShare })
           </div>
         </div>
 
-        {/* 4 Providers Side-by-Side Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {/* 4 Providers 2-Column Grid for spacious layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {result.items.map(item => {
             const providerMeta = MFS_PROVIDERS.find(p => p.id === item.providerId)!;
 
             return (
               <div
                 key={item.providerId}
-                className={`p-5 rounded-2xl bg-white dark:bg-zinc-900 border transition-all relative flex flex-col justify-between shadow-xs ${
+                className={`p-5 sm:p-6 rounded-2xl bg-white dark:bg-zinc-900 border transition-all relative flex flex-col justify-between shadow-xs ${
                   item.isBestValue
                     ? 'border-emerald-500 dark:border-emerald-500 ring-2 ring-emerald-500/20'
                     : 'border-slate-200 dark:border-zinc-800'
