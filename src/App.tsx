@@ -155,7 +155,7 @@ export const App: React.FC = () => {
           isCollapsed={isSidebarCollapsed}
           onToggleCollapse={handleToggleSidebar}
         />
-        <main className="flex-1 px-4 sm:px-6 lg:px-10 py-6 min-w-0 overflow-y-auto">
+        <main className="flex-1 px-4 sm:px-6 lg:px-10 py-6 min-w-0">
           <div className="max-w-6xl mx-auto">
             {renderCalculator()}
           </div>

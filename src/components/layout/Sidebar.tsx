@@ -178,9 +178,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
   return (
     <>
-      {/* Desktop Sidebar (Flush to Left, Collapsible) */}
+      {/* Desktop Sidebar (Flush to Left, Collapsible & Sticky) */}
       <aside
-        className={`flex-shrink-0 hidden lg:flex flex-col sticky top-14 sm:top-16 h-[calc(100vh-3.5rem)] sm:h-[calc(100vh-4rem)] border-r border-slate-200 dark:border-zinc-800/80 bg-white/95 dark:bg-zinc-950/90 backdrop-blur transition-[width] duration-200 ease-in-out z-20 ${
+        className={`flex-shrink-0 hidden lg:flex flex-col sticky top-14 sm:top-16 self-start h-[calc(100vh-3.5rem)] sm:h-[calc(100vh-4rem)] border-r border-slate-200 dark:border-zinc-800/80 bg-white/95 dark:bg-zinc-950/90 backdrop-blur transition-[width] duration-200 ease-in-out z-20 ${
           isCollapsed ? 'w-16' : 'w-64'
         }`}
       >
