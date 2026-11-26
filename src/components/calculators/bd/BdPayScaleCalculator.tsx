@@ -62,30 +62,40 @@ export const BdPayScaleCalculator: React.FC<BdPayScaleCalculatorProps> = ({ onBa
     >
       <div className="space-y-6">
         {/* Input Controls */}
-        <div className="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 shadow-sm space-y-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 shadow-sm space-y-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {/* Grade Selector */}
-            <div>
-              <label className="block text-xs font-bold text-slate-700 dark:text-zinc-300 uppercase tracking-wider mb-1.5">
-                Pay Scale Grade (বেতন গ্রেড)
+            <div className="flex flex-col">
+              <label className="min-h-[2.5rem] flex flex-col justify-end mb-2">
+                <span className="text-xs font-bold text-slate-800 dark:text-zinc-200 uppercase tracking-wider">
+                  Pay Scale Grade
+                </span>
+                <span className="text-[11px] text-slate-500 dark:text-zinc-400 font-normal">
+                  জাতীয় বেতন স্কেল গ্রেড
+                </span>
               </label>
               <select
                 value={grade}
                 onChange={e => handleGradeChange(parseInt(e.target.value))}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-zinc-800 border border-slate-200 dark:border-zinc-700 text-xs font-semibold text-slate-900 dark:text-zinc-100 outline-none focus:border-blue-500"
+                className="w-full h-11 px-3.5 rounded-xl bg-slate-50 dark:bg-zinc-800 border border-slate-200 dark:border-zinc-700 text-xs font-semibold text-slate-900 dark:text-zinc-100 outline-none focus:border-blue-600 focus:bg-white dark:focus:bg-zinc-850 transition-colors"
               >
                 {BD_PAY_GRADES.map(g => (
                   <option key={g.grade} value={g.grade}>
-                    Grade {g.grade} - ৳{g.basicMin.toLocaleString()} ({g.description})
+                    Grade {g.grade} — ৳{g.basicMin.toLocaleString()} ({g.description})
                   </option>
                 ))}
               </select>
             </div>
 
             {/* Basic Salary Input */}
-            <div>
-              <label className="block text-xs font-bold text-slate-700 dark:text-zinc-300 uppercase tracking-wider mb-1.5">
-                Current Basic Salary (বর্তমান মূল বেতন)
+            <div className="flex flex-col">
+              <label className="min-h-[2.5rem] flex flex-col justify-end mb-2">
+                <span className="text-xs font-bold text-slate-800 dark:text-zinc-200 uppercase tracking-wider">
+                  Current Basic Salary
+                </span>
+                <span className="text-[11px] text-slate-500 dark:text-zinc-400 font-normal">
+                  বর্তমান মূল বেতন (ইনক্রিমেন্টসহ)
+                </span>
               </label>
               <div className="relative">
                 <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 font-bold text-sm">
@@ -96,55 +106,70 @@ export const BdPayScaleCalculator: React.FC<BdPayScaleCalculatorProps> = ({ onBa
                   min="0"
                   value={basicSalary}
                   onChange={e => setBasicSalary(parseFloat(e.target.value) || 0)}
-                  className="w-full pl-8 pr-4 py-2 rounded-xl bg-slate-50 dark:bg-zinc-800 border border-slate-200 dark:border-zinc-700 text-sm font-bold text-slate-900 dark:text-zinc-100 outline-none focus:border-blue-500"
+                  className="w-full h-11 pl-8 pr-4 rounded-xl bg-slate-50 dark:bg-zinc-800 border border-slate-200 dark:border-zinc-700 text-sm font-bold text-slate-900 dark:text-zinc-100 outline-none focus:border-blue-600 focus:bg-white dark:focus:bg-zinc-850 transition-colors"
                 />
               </div>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-1">
             {/* Work Location */}
-            <div>
-              <label className="block text-xs font-bold text-slate-700 dark:text-zinc-300 uppercase tracking-wider mb-1.5">
-                Posting Location (কর্মস্থল)
+            <div className="flex flex-col">
+              <label className="min-h-[2.25rem] flex flex-col justify-end mb-2">
+                <span className="text-xs font-bold text-slate-800 dark:text-zinc-200 uppercase tracking-wider">
+                  Posting Location
+                </span>
+                <span className="text-[11px] text-slate-500 dark:text-zinc-400 font-normal">
+                  কর্মস্থল এলাকা
+                </span>
               </label>
               <select
                 value={location}
                 onChange={e => setLocation(e.target.value as WorkLocation)}
-                className="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-zinc-800 border border-slate-200 dark:border-zinc-700 text-xs font-semibold text-slate-900 dark:text-zinc-100 outline-none"
+                className="w-full h-11 px-3 rounded-xl bg-slate-50 dark:bg-zinc-800 border border-slate-200 dark:border-zinc-700 text-xs font-semibold text-slate-900 dark:text-zinc-100 outline-none focus:border-blue-600 transition-colors"
               >
                 <option value="dhaka">Dhaka City Corp (ঢাকা সিটি)</option>
-                <option value="other_city">Chattogram / Other City Corp (অন্যান্য সিটি)</option>
+                <option value="other_city">Chattogram / Other City (অন্যান্য সিটি)</option>
                 <option value="district">District Town (জেলা সদর)</option>
                 <option value="upazila">Upazila / Other Areas (উপজেলা ও অন্যান্য)</option>
               </select>
             </div>
 
             {/* Children Count */}
-            <div>
-              <label className="block text-xs font-bold text-slate-700 dark:text-zinc-300 uppercase tracking-wider mb-1.5">
-                Children (সন্তান সংখ্যা)
+            <div className="flex flex-col">
+              <label className="min-h-[2.25rem] flex flex-col justify-end mb-2">
+                <span className="text-xs font-bold text-slate-800 dark:text-zinc-200 uppercase tracking-wider">
+                  Children Count
+                </span>
+                <span className="text-[11px] text-slate-500 dark:text-zinc-400 font-normal">
+                  সন্তান সংখ্যা (শিক্ষা ভাতা)
+                </span>
               </label>
               <select
                 value={childrenCount}
                 onChange={e => setChildrenCount(parseInt(e.target.value))}
-                className="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-zinc-800 border border-slate-200 dark:border-zinc-700 text-xs font-semibold text-slate-900 dark:text-zinc-100 outline-none"
+                className="w-full h-11 px-3 rounded-xl bg-slate-50 dark:bg-zinc-800 border border-slate-200 dark:border-zinc-700 text-xs font-semibold text-slate-900 dark:text-zinc-100 outline-none focus:border-blue-600 transition-colors"
               >
-                <option value={0}>0 (No Allowance)</option>
-                <option value={1}>1 Child (৳500)</option>
-                <option value={2}>2 or more Children (৳1,000)</option>
+                <option value={0}>0 (ভাতা প্রযোজ্য নয়)</option>
+                <option value={1}>1 Child (৳৫০০)</option>
+                <option value={2}>2 or more Children (৳১,০০০)</option>
               </select>
             </div>
 
             {/* GPF Rate */}
-            <div>
-              <label className="block text-xs font-bold text-slate-700 dark:text-zinc-300 uppercase tracking-wider mb-1.5">
-                GPF Deduction (জিপিএফ কর্তন %)
+            <div className="flex flex-col">
+              <label className="min-h-[2.25rem] flex flex-col justify-end mb-2">
+                <span className="text-xs font-bold text-slate-800 dark:text-zinc-200 uppercase tracking-wider">
+                  GPF Deduction
+                </span>
+                <span className="text-[11px] text-slate-500 dark:text-zinc-400 font-normal">
+                  জিপিএফ কর্তন হার (%)
+                </span>
               </label>
               <select
                 value={gpfRate}
                 onChange={e => setGpfRate(parseInt(e.target.value))}
-                className="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-zinc-800 border border-slate-200 dark:border-zinc-700 text-xs font-semibold text-slate-900 dark:text-zinc-100 outline-none"
+                className="w-full h-11 px-3 rounded-xl bg-slate-50 dark:bg-zinc-800 border border-slate-200 dark:border-zinc-700 text-xs font-semibold text-slate-900 dark:text-zinc-100 outline-none focus:border-blue-600 transition-colors"
               >
                 <option value={0}>0%</option>
                 <option value={5}>5%</option>

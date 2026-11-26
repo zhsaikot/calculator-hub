@@ -45,16 +45,21 @@ export const SanchayapatraCalculator: React.FC<SanchayapatraCalculatorProps> = (
       <div className="space-y-6">
         {/* Controls Card */}
         <div className="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 shadow-sm space-y-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {/* Scheme Selector */}
-            <div>
-              <label className="block text-xs font-bold text-slate-700 dark:text-zinc-300 uppercase tracking-wider mb-1.5">
-                Savings Certificate Scheme (সঞ্চয়পত্র স্কিম)
+            <div className="flex flex-col">
+              <label className="min-h-[2.5rem] flex flex-col justify-end mb-2">
+                <span className="text-xs font-bold text-slate-800 dark:text-zinc-200 uppercase tracking-wider">
+                  Savings Scheme
+                </span>
+                <span className="text-[11px] text-slate-500 dark:text-zinc-400 font-normal">
+                  সঞ্চয়পত্র স্কিম নির্বাচন করুন
+                </span>
               </label>
               <select
                 value={schemeId}
                 onChange={e => setSchemeId(e.target.value as SanchayapatraSchemeId)}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-zinc-800 border border-slate-200 dark:border-zinc-700 text-xs font-semibold text-slate-900 dark:text-zinc-100 outline-none"
+                className="w-full h-11 px-3.5 rounded-xl bg-slate-50 dark:bg-zinc-800 border border-slate-200 dark:border-zinc-700 text-xs font-semibold text-slate-900 dark:text-zinc-100 outline-none focus:border-blue-600 focus:bg-white dark:focus:bg-zinc-850 transition-colors"
               >
                 {Object.values(SANCHAYAPATRA_SCHEMES).map(s => (
                   <option key={s.id} value={s.id}>
@@ -65,9 +70,14 @@ export const SanchayapatraCalculator: React.FC<SanchayapatraCalculatorProps> = (
             </div>
 
             {/* Investment Amount */}
-            <div>
-              <label className="block text-xs font-bold text-slate-700 dark:text-zinc-300 uppercase tracking-wider mb-1.5">
-                Investment Amount (বিনিয়োগের পরিমাণ - টাকা)
+            <div className="flex flex-col">
+              <label className="min-h-[2.5rem] flex flex-col justify-end mb-2">
+                <span className="text-xs font-bold text-slate-800 dark:text-zinc-200 uppercase tracking-wider">
+                  Investment Amount
+                </span>
+                <span className="text-[11px] text-slate-500 dark:text-zinc-400 font-normal">
+                  বিনিয়োগের পরিমাণ (টাকা)
+                </span>
               </label>
               <div className="relative">
                 <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 font-bold text-sm">
@@ -79,20 +89,21 @@ export const SanchayapatraCalculator: React.FC<SanchayapatraCalculatorProps> = (
                   max={result.scheme.maxLimit}
                   value={amount}
                   onChange={e => setAmount(parseFloat(e.target.value) || 0)}
-                  className="w-full pl-8 pr-4 py-2 rounded-xl bg-slate-50 dark:bg-zinc-800 border border-slate-200 dark:border-zinc-700 text-sm font-bold text-slate-900 dark:text-zinc-100 outline-none"
+                  className="w-full h-11 pl-8 pr-4 rounded-xl bg-slate-50 dark:bg-zinc-800 border border-slate-200 dark:border-zinc-700 text-sm font-bold text-slate-900 dark:text-zinc-100 outline-none focus:border-blue-600 focus:bg-white dark:focus:bg-zinc-850 transition-colors"
                 />
               </div>
 
               {/* Amount Chips */}
-              <div className="flex gap-2 mt-2 flex-wrap">
+              <div className="flex gap-1.5 mt-2 flex-wrap">
                 {[200000, 500000, 1000000, 1500000, 3000000].map(val => (
                   <button
                     key={val}
+                    type="button"
                     onClick={() => setAmount(val)}
-                    className={`px-2.5 py-0.5 rounded-md text-[11px] font-semibold border ${
+                    className={`px-2 py-0.5 rounded-md text-[10px] font-semibold border transition-all ${
                       amount === val
-                        ? 'bg-blue-600 text-white border-blue-600'
-                        : 'bg-slate-50 dark:bg-zinc-800 text-slate-600 dark:text-zinc-400 border-slate-200 dark:border-zinc-700'
+                        ? 'bg-blue-600 text-white border-blue-600 shadow-2xs'
+                        : 'bg-slate-50 dark:bg-zinc-800 text-slate-600 dark:text-zinc-400 border-slate-200 dark:border-zinc-700 hover:bg-slate-100'
                     }`}
                   >
                     ৳{val / 100000} লাখ
