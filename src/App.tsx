@@ -142,6 +142,7 @@ export const App: React.FC = () => {
         onOpenHistory={() => setIsHistoryOpen(true)}
         onNavigateHome={() => navigateTo('home')}
         onToggleMobileMenu={() => setIsMobileMenuOpen(prev => !prev)}
+        isSidebarCollapsed={isSidebarCollapsed}
       />
 
       {/* Main Container */}
