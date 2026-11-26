@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { CALCULATORS_REGISTRY } from '../../lib/calculators/registry';
 import { CalculatorId } from '../../lib/calculators/types';
 import { GlassCard } from '../common/GlassCard';
+import { BdFlagIcon } from '../common/BdFlagIcon';
 import {
   Calculator,
   Atom,
@@ -16,6 +17,7 @@ import {
   ArrowLeftRight,
   ArrowRight,
   Search,
+  Globe,
   GraduationCap,
   Briefcase,
   Smartphone,
@@ -66,11 +68,27 @@ export const HomeHub: React.FC<HomeHubProps> = ({ onSelectCalculator }) => {
     return matchesCat && matchesQuery;
   });
 
-  const categories: { id: 'All' | 'Basic' | 'International' | 'Bangladesh'; label: string }[] = [
+  const categories: {
+    id: 'All' | 'Basic' | 'International' | 'Bangladesh';
+    label: string;
+    icon?: React.ReactNode;
+  }[] = [
     { id: 'All', label: 'All Tools (সকল টুল)' },
-    { id: 'Basic', label: '📁 Basic Calculators' },
-    { id: 'International', label: '🌐 International Tools' },
-    { id: 'Bangladesh', label: '🇧🇩 Bangladeshi Tools' },
+    {
+      id: 'Basic',
+      label: 'Basic Calculators',
+      icon: <Calculator className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />,
+    },
+    {
+      id: 'International',
+      label: 'International Tools',
+      icon: <Globe className="w-3.5 h-3.5 text-indigo-500 dark:text-indigo-400" />,
+    },
+    {
+      id: 'Bangladesh',
+      label: 'Bangladeshi Tools',
+      icon: <BdFlagIcon className="w-4 h-2.5" />,
+    },
   ];
 
   return (
@@ -108,13 +126,14 @@ export const HomeHub: React.FC<HomeHubProps> = ({ onSelectCalculator }) => {
           <button
             key={cat.id}
             onClick={() => setActiveCategory(cat.id)}
-            className={`px-3.5 py-1.5 rounded-lg text-xs font-medium transition-colors ${
+            className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-medium transition-colors ${
               activeCategory === cat.id
                 ? 'bg-slate-900 text-white dark:bg-zinc-800 dark:text-zinc-100 font-semibold shadow-xs'
                 : 'text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-zinc-100 hover:bg-slate-100 dark:hover:bg-zinc-800/40'
             }`}
           >
-            {cat.label}
+            {cat.icon}
+            <span>{cat.label}</span>
           </button>
         ))}
       </div>

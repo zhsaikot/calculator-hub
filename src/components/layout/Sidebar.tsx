@@ -19,6 +19,7 @@ import {
   PanelLeftOpen,
   ChevronDown,
   ChevronRight,
+  Globe,
   GraduationCap,
   Briefcase,
   Smartphone,
@@ -28,6 +29,7 @@ import {
   Sparkles,
   LucideIcon,
 } from 'lucide-react';
+import { BdFlagIcon } from '../common/BdFlagIcon';
 
 const ICON_MAP: Record<string, LucideIcon> = {
   Calculator,
@@ -68,7 +70,7 @@ interface CategoryConfig {
 const CATEGORIES: CategoryConfig[] = [
   { id: 'Basic', label: 'Basic Calculators' },
   { id: 'International', label: 'International Tools' },
-  { id: 'Bangladesh', label: 'Bangladeshi Tools', badge: 'BD' },
+  { id: 'Bangladesh', label: 'Bangladeshi Tools' },
 ];
 
 export const Sidebar: React.FC<SidebarProps> = ({
@@ -153,8 +155,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
               onClick={() => toggleCategory(cat.id)}
               className="w-full flex items-center justify-between px-3 py-1.5 rounded-lg text-[11px] font-bold tracking-wider uppercase text-slate-500 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-zinc-100 hover:bg-slate-100 dark:hover:bg-zinc-900/60 transition-colors group"
             >
-              <span className="flex items-center gap-1.5">
-                {cat.id === 'Bangladesh' && <span>🇧🇩</span>}
+              <span className="flex items-center gap-2">
+                {cat.id === 'Basic' && <Calculator className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />}
+                {cat.id === 'International' && <Globe className="w-3.5 h-3.5 text-indigo-500 dark:text-indigo-400" />}
+                {cat.id === 'Bangladesh' && <BdFlagIcon className="w-3.5 h-2.5" />}
                 <span>{cat.label}</span>
                 <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-slate-200/70 dark:bg-zinc-800 text-slate-500 dark:text-zinc-400 font-mono">
                   {items.length}
