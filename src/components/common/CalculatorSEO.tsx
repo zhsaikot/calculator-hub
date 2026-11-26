@@ -12,7 +12,7 @@ interface CalculatorSEOProps {
   formulaDesc: string;
   formulaMath?: string;
   howItWorks: string[];
-  faqs: FaqItem[];
+  faqs?: FaqItem[];
 }
 
 export const CalculatorSEO: React.FC<CalculatorSEOProps> = ({

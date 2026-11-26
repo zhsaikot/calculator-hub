@@ -24,6 +24,15 @@ import { UnitConverter } from './components/calculators/UnitConverter';
 import { CompoundInterestCalculator } from './components/calculators/CompoundInterestCalculator';
 import { DiscountCalculator } from './components/calculators/DiscountCalculator';
 
+// 7 🇧🇩 Bangladeshi Special Tools
+import { BdGpaCalculator } from './components/calculators/bd/BdGpaCalculator';
+import { BdPayScaleCalculator } from './components/calculators/bd/BdPayScaleCalculator';
+import { MfsComparator } from './components/calculators/bd/MfsComparator';
+import { BdLandCalculator } from './components/calculators/bd/BdLandCalculator';
+import { BdTaxCalculator } from './components/calculators/bd/BdTaxCalculator';
+import { SanchayapatraCalculator } from './components/calculators/bd/SanchayapatraCalculator';
+import { GoldCalculator } from './components/calculators/bd/GoldCalculator';
+
 export const App: React.FC = () => {
   const { route, navigateTo } = useHashRoute();
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -129,6 +138,23 @@ export const App: React.FC = () => {
             initialDiscount={route.params.get('disc') ? parseFloat(route.params.get('disc')!) : undefined}
           />
         );
+
+      // 🇧🇩 Bangladeshi Special Tools
+      case 'bd-gpa':
+        return <BdGpaCalculator onBack={() => navigateTo('home')} onShare={() => setIsShareOpen(true)} />;
+      case 'bd-payscale':
+        return <BdPayScaleCalculator onBack={() => navigateTo('home')} onShare={() => setIsShareOpen(true)} />;
+      case 'bd-mfs':
+        return <MfsComparator onBack={() => navigateTo('home')} onShare={() => setIsShareOpen(true)} />;
+      case 'bd-land':
+        return <BdLandCalculator onBack={() => navigateTo('home')} onShare={() => setIsShareOpen(true)} />;
+      case 'bd-tax':
+        return <BdTaxCalculator onBack={() => navigateTo('home')} onShare={() => setIsShareOpen(true)} />;
+      case 'bd-sanchayapatra':
+        return <SanchayapatraCalculator onBack={() => navigateTo('home')} onShare={() => setIsShareOpen(true)} />;
+      case 'bd-gold':
+        return <GoldCalculator onBack={() => navigateTo('home')} onShare={() => setIsShareOpen(true)} />;
+
       default:
         return <HomeHub onSelectCalculator={id => navigateTo(id)} />;
     }

@@ -2,21 +2,31 @@ export type CalculatorId =
   | 'basic'
   | 'scientific'
   | 'age'
-  | 'bmi'
-  | 'tax'
-  | 'profit-loss'
-  | 'loan-emi'
   | 'percentage'
-  | 'converter'
+  | 'loan-emi'
   | 'compound-interest'
-  | 'discount';
+  | 'converter'
+  | 'bmi'
+  | 'discount'
+  | 'profit-loss'
+  | 'tax'
+  // Bangladeshi Special Tools
+  | 'bd-gpa'
+  | 'bd-payscale'
+  | 'bd-mfs'
+  | 'bd-land'
+  | 'bd-tax'
+  | 'bd-sanchayapatra'
+  | 'bd-gold';
+
+export type CalculatorCategory = 'Basic' | 'International' | 'Bangladesh';
 
 export interface CalculatorMeta {
   id: CalculatorId;
   title: string;
   shortDesc: string;
-  category: 'General' | 'Finance' | 'Health' | 'Utility';
-  icon: string; // Lucide icon name or emoji
+  category: CalculatorCategory;
+  icon: string; // Lucide icon name
   badge?: string;
   seoTitle: string;
   seoDescription: string;

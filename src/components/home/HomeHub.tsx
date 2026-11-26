@@ -16,6 +16,13 @@ import {
   ArrowLeftRight,
   ArrowRight,
   Search,
+  GraduationCap,
+  Briefcase,
+  Smartphone,
+  MapPin,
+  FileSpreadsheet,
+  ShieldCheck,
+  Sparkles,
   LucideIcon
 } from 'lucide-react';
 
@@ -31,6 +38,13 @@ const ICON_MAP: Record<string, LucideIcon> = {
   Tag,
   Percent,
   ArrowLeftRight,
+  GraduationCap,
+  Briefcase,
+  Smartphone,
+  MapPin,
+  FileSpreadsheet,
+  ShieldCheck,
+  Sparkles,
 };
 
 interface HomeHubProps {
@@ -38,23 +52,33 @@ interface HomeHubProps {
 }
 
 export const HomeHub: React.FC<HomeHubProps> = ({ onSelectCalculator }) => {
-  const [activeCategory, setActiveCategory] = useState<'All' | 'General' | 'Finance' | 'Health' | 'Utility'>('All');
+  const [activeCategory, setActiveCategory] = useState<'All' | 'Basic' | 'International' | 'Bangladesh'>('All');
   const [searchFilter, setSearchFilter] = useState('');
 
   const filtered = CALCULATORS_REGISTRY.filter(calc => {
     const matchesCat = activeCategory === 'All' || calc.category === activeCategory;
+    const q = searchFilter.toLowerCase().trim();
     const matchesQuery =
-      calc.title.toLowerCase().includes(searchFilter.toLowerCase()) ||
-      calc.shortDesc.toLowerCase().includes(searchFilter.toLowerCase());
+      !q ||
+      calc.title.toLowerCase().includes(q) ||
+      calc.shortDesc.toLowerCase().includes(q) ||
+      (calc.keywords && calc.keywords.some(k => k.toLowerCase().includes(q)));
     return matchesCat && matchesQuery;
   });
+
+  const categories: { id: 'All' | 'Basic' | 'International' | 'Bangladesh'; label: string }[] = [
+    { id: 'All', label: 'All Tools (সকল টুল)' },
+    { id: 'Basic', label: '📁 Basic Calculators' },
+    { id: 'International', label: '🌐 International Tools' },
+    { id: 'Bangladesh', label: '🇧🇩 Bangladeshi Tools' },
+  ];
 
   return (
     <div className="space-y-10">
       {/* Minimal Hero Section */}
       <section className="text-center py-6 sm:py-12 px-4 max-w-3xl mx-auto">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800/80 border border-slate-200 dark:border-zinc-700/60 text-xs font-medium text-slate-700 dark:text-zinc-300 mb-4">
-          <span>11 Precision Online Calculators</span>
+          <span>18 Precision Online Calculators</span>
         </div>
 
         <h1 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl tracking-tight text-slate-900 dark:text-zinc-100">
@@ -62,7 +86,7 @@ export const HomeHub: React.FC<HomeHubProps> = ({ onSelectCalculator }) => {
         </h1>
 
         <p className="mt-3.5 text-sm sm:text-base text-slate-600 dark:text-zinc-400 max-w-xl mx-auto leading-relaxed">
-          From loan amortization schedules and tax breakdowns to body mass index and unit conversions. Ad-free, private, and instant.
+          From Bangladeshi Govt Pay Scale, SSC/HSC GPA & MFS comparison to loan schedules, tax breakdowns, and unit conversions. Ad-free, private, and instant.
         </p>
 
         {/* Clean Search Input */}
@@ -70,7 +94,7 @@ export const HomeHub: React.FC<HomeHubProps> = ({ onSelectCalculator }) => {
           <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 dark:text-zinc-400" />
           <input
             type="text"
-            placeholder="Search by name or category (e.g. loan, tax, bmi)..."
+            placeholder="Search tools, formulas, or বাংলা নাম (e.g. gpa, payscale, বিকাশ)..."
             value={searchFilter}
             onChange={e => setSearchFilter(e.target.value)}
             className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 text-sm text-slate-900 dark:text-zinc-100 outline-none focus:border-blue-600 transition-colors shadow-sm"
@@ -79,18 +103,18 @@ export const HomeHub: React.FC<HomeHubProps> = ({ onSelectCalculator }) => {
       </section>
 
       {/* Category Filter Tabs */}
-      <div className="flex items-center justify-center gap-1.5 flex-wrap">
-        {(['All', 'General', 'Finance', 'Health', 'Utility'] as const).map(cat => (
+      <div className="flex items-center justify-center gap-2 flex-wrap">
+        {categories.map(cat => (
           <button
-            key={cat}
-            onClick={() => setActiveCategory(cat)}
+            key={cat.id}
+            onClick={() => setActiveCategory(cat.id)}
             className={`px-3.5 py-1.5 rounded-lg text-xs font-medium transition-colors ${
-              activeCategory === cat
-                ? 'bg-slate-900 text-white dark:bg-zinc-800 dark:text-zinc-100 font-semibold'
+              activeCategory === cat.id
+                ? 'bg-slate-900 text-white dark:bg-zinc-800 dark:text-zinc-100 font-semibold shadow-xs'
                 : 'text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-zinc-100 hover:bg-slate-100 dark:hover:bg-zinc-800/40'
             }`}
           >
-            {cat}
+            {cat.label}
           </button>
         ))}
       </div>
