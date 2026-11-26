@@ -187,7 +187,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                           : 'text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-zinc-100 hover:bg-slate-100 dark:hover:bg-zinc-900'
                       }`}
                     >
-                      <div className="flex items-center gap-2.5 truncate">
+                      <div className="flex items-center gap-2.5 min-w-0 flex-1 mr-2">
                         <Icon
                           className={`w-4 h-4 flex-shrink-0 ${
                             isActive
@@ -199,7 +199,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                       </div>
                       {item.badge && (
                         <span
-                          className={`text-[9px] px-1.5 py-0.5 rounded-full font-medium ${
+                          className={`text-[9px] px-2 py-0.5 rounded-full font-medium whitespace-nowrap flex-shrink-0 ${
                             isActive
                               ? 'bg-blue-600 text-white'
                               : 'bg-slate-100 dark:bg-zinc-800 text-slate-600 dark:text-zinc-400 border border-slate-200 dark:border-zinc-700'
@@ -273,7 +273,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
       {/* Desktop Sidebar (Flush to Left, Collapsible & Sticky) */}
       <aside
         className={`flex-shrink-0 hidden lg:flex flex-col sticky top-14 sm:top-16 self-start h-[calc(100vh-3.5rem)] sm:h-[calc(100vh-4rem)] border-r border-slate-200 dark:border-zinc-800/80 bg-white/95 dark:bg-zinc-950/90 backdrop-blur transition-[width] duration-200 ease-in-out z-20 ${
-          isCollapsed ? 'w-16' : 'w-64'
+          isCollapsed ? 'w-16' : 'w-80'
         }`}
       >
         {/* Navigation List Area */}
@@ -321,7 +321,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             className="fixed inset-0 bg-black/60 backdrop-blur-xs transition-opacity"
             onClick={onCloseMobile}
           />
-          <div className="relative w-72 max-w-[85vw] h-full bg-white dark:bg-zinc-950 border-r border-slate-200 dark:border-zinc-800 flex flex-col shadow-2xl z-10 animate-fade-up">
+          <div className="relative w-80 max-w-[85vw] h-full bg-white dark:bg-zinc-950 border-r border-slate-200 dark:border-zinc-800 flex flex-col shadow-2xl z-10 animate-fade-up">
             {/* Drawer Header */}
             <div className="flex items-center justify-between p-4 border-b border-slate-200 dark:border-zinc-800">
               <div className="flex items-center gap-2.5 font-display font-bold text-sm text-slate-900 dark:text-zinc-100">

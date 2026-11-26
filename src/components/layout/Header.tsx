@@ -25,8 +25,8 @@ export const Header: React.FC<HeaderProps> = ({
         {/* Left: Brand Logo (Aligned pixel-perfectly with Sidebar) */}
         <div
           className={`flex items-center h-full ${
-            isSidebarCollapsed ? 'lg:w-16' : 'lg:w-64'
-          } lg:border-r border-slate-200 dark:border-zinc-800/80 transition-[width] duration-200 px-3 sm:px-4 lg:px-3 flex-shrink-0`}
+            isSidebarCollapsed ? 'lg:w-16' : 'lg:w-80'
+          } lg:border-r border-slate-200 dark:border-zinc-800/80 transition-[width] duration-200 px-3 sm:px-4 lg:px-4 flex-shrink-0`}
         >
           {/* Mobile Menu Button */}
           <button
