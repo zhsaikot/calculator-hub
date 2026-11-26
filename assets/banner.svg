@@ -1,0 +1,259 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 340" width="1200" height="340" fill="none">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#09090b" />
+      <stop offset="55%" stop-color="#0d111c" />
+      <stop offset="100%" stop-color="#09090b" />
+    </linearGradient>
+
+    <!-- Blue Accent Gradient -->
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#1d4ed8" />
+    </linearGradient>
+
+    <!-- Emerald Accent Gradient -->
+    <linearGradient id="emeraldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+
+    <!-- Ambient Glows -->
+    <radialGradient id="glowBlue" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#2563eb" stop-opacity="0.28" />
+      <stop offset="100%" stop-color="#2563eb" stop-opacity="0" />
+    </radialGradient>
+
+    <radialGradient id="glowEmerald" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.20" />
+      <stop offset="100%" stop-color="#10b981" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Grid Pattern -->
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#ffffff" stroke-opacity="0.04" stroke-width="1" />
+    </pattern>
+
+    <!-- Clip Path for Rounded Banner -->
+    <clipPath id="bannerClip">
+      <rect x="0" y="0" width="1200" height="340" rx="20" />
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#bannerClip)">
+    <!-- Base Background -->
+    <rect width="1200" height="340" fill="url(#bgGrad)" />
+    <rect width="1200" height="340" fill="url(#grid)" />
+
+    <!-- Animated Ambient Glow Orbs -->
+    <circle cx="240" cy="110" r="240" fill="url(#glowBlue)">
+      <animate attributeName="cx" values="240;280;240" dur="9s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.7;1;0.7" dur="6s" repeatCount="indefinite" />
+    </circle>
+
+    <circle cx="940" cy="220" r="260" fill="url(#glowEmerald)">
+      <animate attributeName="cy" values="220;180;220" dur="8s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.6;1;0.6" dur="7s" repeatCount="indefinite" />
+    </circle>
+
+    <!-- Subtle Decorative Animated Orbit Lines -->
+    <path d="M -50 290 Q 350 220 680 310 T 1260 250" stroke="#3b82f6" stroke-opacity="0.14" stroke-width="1.5" fill="none">
+      <animate attributeName="d"
+        values="M -50 290 Q 350 220 680 310 T 1260 250; M -50 270 Q 350 260 680 280 T 1260 270; M -50 290 Q 350 220 680 310 T 1260 250"
+        dur="10s" repeatCount="indefinite" />
+    </path>
+
+    <!-- ==================== LEFT BRANDING SECTION ==================== -->
+    <g transform="translate(64, 64)">
+      <!-- App Icon Box -->
+      <rect x="0" y="0" width="52" height="52" rx="14" fill="url(#blueGrad)" />
+      <!-- Calculator Icon inside Box -->
+      <rect x="14" y="11" width="24" height="30" rx="4" stroke="#ffffff" stroke-width="2" fill="none" />
+      <rect x="18" y="15" width="16" height="6" rx="1.5" fill="#ffffff" fill-opacity="0.9" />
+      <circle cx="19.5" cy="26" r="1.5" fill="#ffffff" />
+      <circle cx="26" cy="26" r="1.5" fill="#ffffff" />
+      <circle cx="32.5" cy="26" r="1.5" fill="#ffffff" />
+      <circle cx="19.5" cy="32" r="1.5" fill="#ffffff" />
+      <circle cx="26" cy="32" r="1.5" fill="#ffffff" />
+      <rect x="31" y="30.5" width="3" height="6" rx="1" fill="#93c5fd" />
+
+      <!-- Brand Title + Version Pill -->
+      <text x="68" y="34" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="38" font-weight="800" fill="#fafafa" letter-spacing="-1">
+        CalcHub
+      </text>
+
+      <!-- Live Pulse Badge -->
+      <g transform="translate(232, 12)">
+        <rect x="0" y="0" width="128" height="26" rx="13" fill="#18181b" stroke="#27272a" stroke-width="1" />
+        <circle cx="15" cy="13" r="4" fill="#10b981">
+          <animate attributeName="opacity" values="1;0.3;1" dur="1.8s" repeatCount="indefinite" />
+        </circle>
+        <text x="26" y="17" font-family="Inter, Segoe UI, sans-serif" font-size="11.5" font-weight="600" fill="#e4e4e7">
+          v2.0 • 18 Tools
+        </text>
+      </g>
+
+      <!-- Tagline -->
+      <text x="0" y="92" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="18" font-weight="500" fill="#a1a1aa">
+        Fast, Minimal &amp; Privacy-First Calculation Suite
+      </text>
+      <text x="0" y="118" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="14.5" font-weight="400" fill="#71717a">
+        Everyday Math • Global Finance • Bangladesh Govt, Tax, GPA &amp; MFS Tools
+      </text>
+
+      <!-- Feature Pills Row -->
+      <g transform="translate(0, 148)">
+        <!-- Pill 1: BD Flag + BD Tools -->
+        <rect x="0" y="0" width="164" height="32" rx="10" fill="#18181b" stroke="#27272a" stroke-width="1" />
+        <!-- Mini BD Flag SVG -->
+        <g transform="translate(12, 9)">
+          <rect width="20" height="13" rx="2" fill="#006A4E" />
+          <circle cx="9" cy="6.5" r="4.2" fill="#F42A41" />
+        </g>
+        <text x="40" y="20.5" font-family="Inter, Segoe UI, sans-serif" font-size="12" font-weight="600" fill="#e4e4e7">
+          7 Bangladesh Tools
+        </text>
+
+        <!-- Pill 2: Live History -->
+        <rect x="176" y="0" width="154" height="32" rx="10" fill="#18181b" stroke="#27272a" stroke-width="1" />
+        <circle cx="192" cy="16" r="4" fill="#3b82f6" />
+        <text x="204" y="20.5" font-family="Inter, Segoe UI, sans-serif" font-size="12" font-weight="600" fill="#e4e4e7">
+          Live History &amp; .TXT
+        </text>
+
+        <!-- Pill 3: PWA & Offline -->
+        <rect x="342" y="0" width="142" height="32" rx="10" fill="#18181b" stroke="#27272a" stroke-width="1" />
+        <circle cx="358" cy="16" r="4" fill="#10b981" />
+        <text x="370" y="20.5" font-family="Inter, Segoe UI, sans-serif" font-size="12" font-weight="600" fill="#e4e4e7">
+          100% Client-Side
+        </text>
+      </g>
+    </g>
+
+    <!-- ==================== RIGHT GRAPHICAL MOCKUP (FLOATING UI) ==================== -->
+    <g transform="translate(720, 42)">
+      <animateTransform attributeName="transform" type="translate" values="720,42; 720,35; 720,42" dur="5.5s" repeatCount="indefinite" />
+
+      <!-- Floating Math Symbols around Mockup -->
+      <g opacity="0.75">
+        <rect x="-34" y="38" width="28" height="28" rx="8" fill="#18181b" stroke="#27272a" />
+        <text x="-20" y="57" text-anchor="middle" font-family="Inter, monospace" font-size="15" font-weight="700" fill="#60a5fa">+</text>
+        <animateTransform attributeName="transform" type="translate" values="0,0; 0,-7; 0,0" dur="3.8s" repeatCount="indefinite" />
+      </g>
+
+      <g opacity="0.75">
+        <rect x="-26" y="190" width="28" height="28" rx="8" fill="#18181b" stroke="#27272a" />
+        <text x="-12" y="209" text-anchor="middle" font-family="Inter, monospace" font-size="15" font-weight="700" fill="#34d399">৳</text>
+        <animateTransform attributeName="transform" type="translate" values="0,0; 0,6; 0,0" dur="4.2s" repeatCount="indefinite" />
+      </g>
+
+      <g opacity="0.75">
+        <rect x="412" y="24" width="28" height="28" rx="8" fill="#18181b" stroke="#27272a" />
+        <text x="426" y="43" text-anchor="middle" font-family="Inter, monospace" font-size="14" font-weight="700" fill="#f472b6">%</text>
+        <animateTransform attributeName="transform" type="translate" values="0,0; 0,6; 0,0" dur="4.6s" repeatCount="indefinite" />
+      </g>
+
+      <!-- Main Mockup Frame -->
+      <rect x="0" y="0" width="404" height="256" rx="16" fill="#121215" stroke="#27272a" stroke-width="1.5" />
+
+      <!-- Window Top Dots -->
+      <circle cx="18" cy="16" r="3.5" fill="#ef4444" fill-opacity="0.8" />
+      <circle cx="30" cy="16" r="3.5" fill="#f59e0b" fill-opacity="0.8" />
+      <circle cx="42" cy="16" r="3.5" fill="#10b981" fill-opacity="0.8" />
+      <line x1="0" y1="30" x2="404" y2="30" stroke="#27272a" stroke-width="1" />
+
+      <!-- Left Side of Mockup: Calculator Keypad -->
+      <g transform="translate(16, 44)">
+        <!-- Display -->
+        <rect x="0" y="0" width="176" height="46" rx="10" fill="#18181b" stroke="#27272a" stroke-width="1" />
+        <text x="164" y="16" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="9.5" fill="#71717a">
+          12,500 × 1.5 =
+        </text>
+        <text x="164" y="36" text-anchor="end" font-family="Inter, sans-serif" font-size="18" font-weight="800" fill="#fafafa">
+          18,750
+        </text>
+        <!-- Blinking Cursor -->
+        <rect x="167" y="21" width="2" height="16" rx="1" fill="#3b82f6">
+          <animate attributeName="opacity" values="1;0;1" dur="1.1s" repeatCount="indefinite" />
+        </rect>
+
+        <!-- Mini Keypad Grid -->
+        <g transform="translate(0, 56)">
+          <!-- Row 1 -->
+          <rect x="0" y="0" width="40" height="28" rx="6" fill="#271a1c" />
+          <text x="20" y="18" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#f87171">AC</text>
+          <rect x="45" y="0" width="40" height="28" rx="6" fill="#18181b" stroke="#27272a" />
+          <text x="65" y="18" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#e4e4e7">7</text>
+          <rect x="90" y="0" width="40" height="28" rx="6" fill="#18181b" stroke="#27272a" />
+          <text x="110" y="18" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#e4e4e7">8</text>
+          <rect x="135" y="0" width="40" height="28" rx="6" fill="#172554" />
+          <text x="155" y="18" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#60a5fa">÷</text>
+
+          <!-- Row 2 -->
+          <rect x="0" y="34" width="40" height="28" rx="6" fill="#18181b" stroke="#27272a" />
+          <text x="20" y="52" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#e4e4e7">4</text>
+          <rect x="45" y="34" width="40" height="28" rx="6" fill="#18181b" stroke="#27272a" />
+          <text x="65" y="52" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#e4e4e7">5</text>
+          <rect x="90" y="34" width="40" height="28" rx="6" fill="#18181b" stroke="#27272a" />
+          <text x="110" y="52" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#e4e4e7">6</text>
+          <rect x="135" y="34" width="40" height="28" rx="6" fill="#172554" />
+          <text x="155" y="52" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#60a5fa">×</text>
+
+          <!-- Row 3 -->
+          <rect x="0" y="68" width="40" height="28" rx="6" fill="#18181b" stroke="#27272a" />
+          <text x="20" y="86" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#e4e4e7">1</text>
+          <rect x="45" y="68" width="40" height="28" rx="6" fill="#18181b" stroke="#27272a" />
+          <text x="65" y="86" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#e4e4e7">2</text>
+          <rect x="90" y="68" width="40" height="28" rx="6" fill="#18181b" stroke="#27272a" />
+          <text x="110" y="86" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#e4e4e7">3</text>
+          <rect x="135" y="68" width="40" height="28" rx="6" fill="#172554" />
+          <text x="155" y="86" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#60a5fa">+</text>
+
+          <!-- Row 4 -->
+          <rect x="0" y="102" width="85" height="28" rx="6" fill="#18181b" stroke="#27272a" />
+          <text x="42.5" y="120" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#e4e4e7">0</text>
+          <rect x="90" y="102" width="40" height="28" rx="6" fill="#18181b" stroke="#27272a" />
+          <text x="110" y="120" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#e4e4e7">.</text>
+          <rect x="135" y="102" width="40" height="28" rx="6" fill="url(#blueGrad)" />
+          <text x="155" y="120" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="800" fill="#ffffff">=</text>
+        </g>
+      </g>
+
+      <!-- Right Side of Mockup: Live History Panel -->
+      <g transform="translate(208, 44)">
+        <rect x="0" y="0" width="180" height="196" rx="12" fill="#18181b" stroke="#27272a" stroke-width="1" />
+        <text x="12" y="20" font-family="Inter, sans-serif" font-size="10.5" font-weight="700" fill="#e4e4e7">
+          Live History
+        </text>
+        <rect x="132" y="9" width="36" height="16" rx="4" fill="#27272a" />
+        <text x="150" y="20" text-anchor="middle" font-family="Inter, sans-serif" font-size="8.5" font-weight="600" fill="#a1a1aa">
+          .TXT
+        </text>
+        <line x1="0" y1="30" x2="180" y2="30" stroke="#27272a" stroke-width="1" />
+
+        <!-- History Item 1 (Animated highlight) -->
+        <rect x="10" y="40" width="160" height="42" rx="8" fill="#121215" stroke="#2563eb" stroke-opacity="0.6" stroke-width="1">
+          <animate attributeName="stroke-opacity" values="0.3;0.9;0.3" dur="2.5s" repeatCount="indefinite" />
+        </rect>
+        <text x="18" y="55" font-family="JetBrains Mono, monospace" font-size="8.5" fill="#71717a">12,500 × 1.5 =</text>
+        <text x="18" y="72" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#fafafa">18,750</text>
+        <rect x="122" y="61" width="40" height="14" rx="4" fill="#064e3b" />
+        <text x="142" y="71" text-anchor="middle" font-family="Inter, sans-serif" font-size="7.5" font-weight="600" fill="#34d399">Rent</text>
+
+        <!-- History Item 2 -->
+        <rect x="10" y="90" width="160" height="42" rx="8" fill="#121215" stroke="#27272a" stroke-width="1" />
+        <text x="18" y="105" font-family="JetBrains Mono, monospace" font-size="8.5" fill="#71717a">500 + 250 =</text>
+        <text x="18" y="122" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#e4e4e7">750</text>
+
+        <!-- History Item 3 -->
+        <rect x="10" y="140" width="160" height="42" rx="8" fill="#121215" stroke="#27272a" stroke-width="1" />
+        <text x="18" y="155" font-family="JetBrains Mono, monospace" font-size="8.5" fill="#71717a">2,400 ÷ 12 =</text>
+        <text x="18" y="172" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#e4e4e7">200</text>
+      </g>
+    </g>
+
+    <!-- Subtle Outer Border -->
+    <rect x="0.75" y="0.75" width="1198.5" height="338.5" rx="19.5" stroke="#27272a" stroke-width="1.5" fill="none" />
+  </g>
+</svg>
