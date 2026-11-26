@@ -181,15 +181,20 @@ export const App: React.FC = () => {
           isCollapsed={isSidebarCollapsed}
           onToggleCollapse={handleToggleSidebar}
         />
-        <main className="flex-1 px-4 sm:px-6 lg:px-10 py-6 min-w-0">
-          <div className="max-w-6xl mx-auto">
-            {renderCalculator()}
-          </div>
-        </main>
+        <div
+          className={`flex-1 flex flex-col min-w-0 transition-[margin] duration-200 ${
+            isSidebarCollapsed ? 'lg:ml-16' : 'lg:ml-80'
+          }`}
+        >
+          <main className="flex-1 px-4 sm:px-6 lg:px-10 py-6 min-w-0">
+            <div className="max-w-6xl mx-auto">
+              {renderCalculator()}
+            </div>
+          </main>
+          {/* Footer */}
+          <Footer onSelectCalculator={id => navigateTo(id)} />
+        </div>
       </div>
-
-      {/* Footer */}
-      <Footer onSelectCalculator={id => navigateTo(id)} />
 
       {/* Modals & Drawers */}
       <SearchModal
